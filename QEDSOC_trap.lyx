@@ -59,87 +59,43 @@
 \begin_body
 
 \begin_layout Title
-Quantum version of the model, by Lin Dong, 10/31/13
+Quantum version of the model in a trap
+\end_layout
+
+\begin_layout Author
+Lin Dong, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-In this note, we consider the quantum version of the cavity-assisted SOC
- model, where photon and atom field is not treated as a mean field variable.
- 
-\end_layout
-
-\begin_layout Standard
-Using bare atomic psedo-spin operater 
-\begin_inset Formula $\Psi_{\sigma}({\bf r})$
-\end_inset
-
- and photon field operater 
-\begin_inset Formula $c$
-\end_inset
-
- (without explicit time dependence), we can write the atom-cavity Hamiltonian
- as, 
+We can write the 1D atom-cavity Hamiltonian in a hamonic trap as, 
 \begin_inset Formula \begin{eqnarray}
-H & = & \sum_{\sigma}\int d{\bf r}\left[\Psi_{\sigma}^{\dagger}({\bf r})\left(\frac{\hbar^{2}\hat{{\bf k}}^{2}}{2m}+\epsilon_{\sigma}^{0}\right)\Psi_{\sigma}({\bf r})\right]\nonumber \\
- & + & \frac{\Omega}{2}\int d{\bf r}e^{+2i\hbar q_{r}z}\Psi_{\uparrow}^{\dagger}({\bf r})\Psi_{\downarrow}({\bf r})\tilde{c}e^{+i\omega_{R}t}\nonumber \\
- & + & \frac{\Omega}{2}\int d{\bf r}e^{-2i\hbar q_{r}z}\tilde{c}^{\dagger}\Psi_{\downarrow}^{\dagger}({\bf r})\Psi_{\uparrow}({\bf r})e^{-i\omega_{R}t}\nonumber \\
- & + & i\varepsilon_{p}(\tilde{c}^{\dagger}e^{-i\omega_{p}t}-\tilde{c}e^{+i\omega_{p}t})+\hbar\omega_{c}\tilde{c}^{\dagger}\tilde{c}.\end{eqnarray}
+\mathcal{H}_{\text{eff}} & = & \int dz\left(\begin{array}{cc}
+\psi_{\uparrow}^{\dagger}(z) & \psi_{\downarrow}^{\dagger}(z)\end{array}\right)\left[\frac{\hbar^{2}k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{\hbar^{2}}{m}q_{r}k_{z}\sigma_{z}+\delta\sigma_{z}\right]\left(\begin{array}{c}
+\psi_{\uparrow}(z)\\
+\psi_{\downarrow}(z)\end{array}\right)\nonumber \\
+ & + & \int dz\frac{\Omega}{2}\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c+\int dz\frac{\Omega}{2}c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\nonumber \\
+ & + & i\varepsilon_{p}(c^{\dagger}-c)-\hbar\delta_{c}c^{\dagger}c.\end{eqnarray}
 
 \end_inset
 
-We work in rotating frame 
-\begin_inset Formula $c=\tilde{c}e^{+i\omega_{p}t}$
-\end_inset
-
- and gauge transformation 
-\begin_inset Formula $\tilde{\psi}_{\uparrow}=\Psi_{\uparrow}e^{-i\hbar q_{r}z}$
-\end_inset
-
-, 
-\begin_inset Formula $\tilde{\psi}_{\downarrow}=\Psi_{\downarrow}e^{+i\hbar q_{r}z}$
-\end_inset
-
- .
- After unitary transformation of origional Hamiltonian, we can write 
-\begin_inset Formula \begin{eqnarray}
-\mathcal{H}_{\text{eff}} & = & \int d{\bf r}\left(\begin{array}{cc}
-\tilde{\psi}_{\uparrow}^{\dagger}({\bf r}) & \tilde{\psi}_{\downarrow}^{\dagger}({\bf r})\end{array}\right)\left[\frac{\hbar^{2}\hat{{\bf k}}^{2}}{2m}+\frac{\hbar^{2}}{m}q_{r}\hat{k_{z}}\sigma_{z}+\tilde{\delta}\sigma_{z}\right]\left(\begin{array}{c}
-\tilde{\psi}_{\uparrow}({\bf r})\\
-\tilde{\psi}_{\downarrow}({\bf r})\end{array}\right)\nonumber \\
- & + & \int d{\bf r}\frac{\Omega}{2}\tilde{\psi}_{\uparrow}^{\dagger}({\bf r})\tilde{\psi}_{\downarrow}({\bf r})\tilde{c}+\int d{\bf r}\frac{\Omega}{2}c^{\dagger}\tilde{\psi}_{\downarrow}^{\dagger}({\bf r})\tilde{\psi}_{\uparrow}({\bf r})\nonumber \\
- & + & i\varepsilon_{p}(c^{\dagger}-c)-\hbar\delta_{c}c^{\dagger}c\end{eqnarray}
-
-\end_inset
-
-where 
-\begin_inset Formula $\delta_{c}=\omega_{p}-\omega_{c}$
-\end_inset
-
- and we have neglected constant energy 
-\begin_inset Formula $\frac{\hbar^{2}q_{r}^{2}}{2m}$
-\end_inset
-
- and incorprated energy shift of two-photon detunning into 
-\begin_inset Formula $\tilde{\delta}=\delta_{R}/2+(\epsilon_{\uparrow}^{0}-\epsilon_{\downarrow}^{0})$
-\end_inset
-
- and 
-\begin_inset Formula $\delta_{R}=\omega_{p}-\omega_{R}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-As we consider external pumping, we shall deal with disspation of cavity
- decay in terms of density operator approach.
- Generally dissipation process is modeled by Liouvillean term 
+Dissipation process is modeled by Liouvillean term 
 \begin_inset Formula $\mathcal{L}$
 \end_inset
 
- appearing in the master equation (where we only consider cavity decay and
- neglect effect of spontaneous emission), 
+ appearing in the master equation, 
 \begin_inset Formula \begin{equation}
 \dot{\rho}=\frac{1}{i\hbar}[\mathcal{H}_{\text{eff}},\rho]+\mathcal{L}\rho\end{equation}
 
@@ -151,85 +107,18 @@ where
 
 \end_inset
 
+Then, we write the commutator explicitly as, 
+\begin_inset Formula \begin{eqnarray*}
+[\mathcal{H}_{\text{eff}},\rho] & = & \int dz\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{q_{r}k_{z}}{m}+\delta\right)\psi_{\uparrow}(z)\rho-\int dz\rho\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{q_{r}k_{z}}{m}+\delta\right)\psi_{\uparrow}(z)\\
+ & + & \int dz\psi_{\downarrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}-\frac{q_{r}k_{z}}{m}-\delta\right)\psi_{\downarrow}(z)\rho-\int dz\rho\psi_{\downarrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}-\frac{q_{r}k_{z}}{m}-\delta\right)\psi_{\downarrow}(z)\\
+ & + & \frac{\Omega}{2}\int dz\left(\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\rho-\rho\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\right)\\
+ & + & i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right).\end{eqnarray*}
+
+\end_inset
+
 
 \begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Note that in the tripod or 
-\begin_inset Formula $\Lambda$
-\end_inset
-
- scheme, since we have large detuning, 
-\begin_inset Formula $\Delta\gg\Gamma_{\uparrow\downarrow}$
-\end_inset
-
-, we are in the projected space of dark states, where spontaneous emission
- is negligible.
- (important for EIT and STIRAP, etc)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For the homogeneous system, momentum operator 
-\begin_inset Formula $\hat{{\bf k}}$
-\end_inset
-
- commutes with 
-\begin_inset Formula $\mathcal{H}_{\text{eff}}$
-\end_inset
-
-, and we can decouple each momentum eigenstate using the ansartz 
-\begin_inset Formula $\tilde{\psi}_{\sigma}({\bf k})=e^{i{\bf k}\cdot{\bf r}}\psi_{\sigma}$
-\end_inset
-
-.
- For given momentum (as a good quantum number), we work with the Hamiltonian
- in subspace of 
-\begin_inset Formula ${\bf k}$
-\end_inset
-
-, 
-\begin_inset Formula \begin{eqnarray}
-\mathcal{H}_{\text{eff}}({\bf k}) & = & \sum_{\sigma}\left(\frac{{\bf k}^{2}}{2m}+\alpha\frac{q_{r}k_{z}}{m}+\alpha\tilde{\delta}\right)\psi_{\sigma}^{\dagger}\psi_{\sigma}+\frac{\Omega}{2}\left(\psi_{\uparrow}^{\dagger}\psi_{\downarrow}c+c^{\dagger}\psi_{\downarrow}^{\dagger}\psi_{\uparrow}\right)\nonumber \\
- & + & i\varepsilon_{p}(c^{\dagger}-c)-\delta_{c}c^{\dagger}c\end{eqnarray}
-
-\end_inset
-
-where 
-\begin_inset Formula $\alpha=\pm1$
-\end_inset
-
- for 
-\begin_inset Formula $\sigma=\uparrow,\downarrow$
-\end_inset
-
- respectively.
- 
-\end_layout
-
-\begin_layout Standard
-Then, we iron out the commutator explicitly as, 
-\begin_inset Formula \begin{eqnarray}
-[\mathcal{H}_{\text{eff}}({\bf k}),\rho] & = & \left(\frac{{\bf k}^{2}}{2m}+\frac{q_{r}k_{z}}{m}+\tilde{\delta}\right)\left(\psi_{\uparrow}^{\dagger}\psi_{\uparrow}\rho-\rho\psi_{\uparrow}^{\dagger}\psi_{\uparrow}\right)+\left(\frac{{\bf k}^{2}}{2m}-\frac{q_{r}k_{z}}{m}-\tilde{\delta}\right)\left(\psi_{\downarrow}^{\dagger}\psi_{\downarrow}\rho-\rho\psi_{\downarrow}^{\dagger}\psi_{\downarrow}\right)\\
- & + & \frac{\Omega}{2}\left(\psi_{\uparrow}^{\dagger}\psi_{\downarrow}c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}\psi_{\uparrow}\rho-\rho\psi_{\uparrow}^{\dagger}\psi_{\downarrow}c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}\psi_{\uparrow}\right)+i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right).\end{eqnarray}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For few photons, the quantum phenomena shall be more prominant.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 To this end, we choose our basis states as 
@@ -289,7 +178,7 @@ To this end, we choose our basis states as
 
 \begin_layout Standard
 To this end, we choose our basis states as 
-\begin_inset Formula $|n;\sigma\rangle$
+\begin_inset Formula $|n;q,\sigma\rangle$
 \end_inset
 
  where 
@@ -300,33 +189,62 @@ To this end, we choose our basis states as
 \begin_inset Formula $N$
 \end_inset
 
- is the truncation number and 
+ is the truncation number of photon, 
+\begin_inset Formula $q=1,2,...Q$
+\end_inset
+
+ where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the truncation number of harmonic oscillator energy levels and 
 \begin_inset Formula $\sigma=\uparrow,\downarrow$
 \end_inset
 
 .
  Our goal is to calculate matrix elements of density operator under this
  basis 
-\begin_inset Formula $\langle m;\sigma|\rho|n;\sigma'\rangle\equiv\rho_{mn}^{\sigma\sigma'}$
+\begin_inset Formula $\langle m;p,\sigma|\rho|n;q,\sigma'\rangle\equiv\rho_{mn}^{p\sigma q\sigma'}$
 \end_inset
 
 .
  Rules for creation and annilation operators are 
 \begin_inset Formula \begin{eqnarray*}
-c|n;\sigma'\rangle & = & \sqrt{n}|n-1;\sigma'\rangle,\quad c^{\dagger}|n;\sigma'\rangle=\sqrt{n+1}|n+1;\sigma'\rangle\\
-\langle m;\sigma|c & = & \sqrt{m+1}\langle m+1;\sigma|,\langle m;\sigma|c^{\dagger}=\sqrt{m}\langle m-1;\sigma|.\end{eqnarray*}
+c|n;q,\sigma'\rangle & = & \sqrt{n}|n-1;q,\sigma'\rangle,\quad c^{\dagger}|n;q,\sigma'\rangle=\sqrt{n+1}|n+1;q,\sigma'\rangle\\
+\langle m;q,\sigma|c & = & \sqrt{m+1}\langle m+1;q,\sigma|,\langle m;q,\sigma|c^{\dagger}=\sqrt{m}\langle m-1;q,\sigma|.\end{eqnarray*}
 
 \end_inset
 
-In the 
-\begin_inset Formula $\mathcal{H}_{\text{eff}}$
+Field operator 
+\begin_inset Formula $\psi_{\sigma}(z)=\sum_{q=1}^{Q}\varphi_{q}(z)a_{q\sigma}$
 \end_inset
 
-, Raman term involves spin flipping and cavity photon coupling, whereas
- the rest of terms involve cavity photon coupling only.
- For arbitrary state, we have
+ in second quantization, where 
+\begin_inset Formula $\varphi_{q}(z)$
+\end_inset
+
+ is the eigenstate wavefunction of harmonic oscillator.
+ Also, 
+\begin_inset Formula $k_{z}=-i\frac{\partial}{\partial z}$
+\end_inset
+
+ serves as first quantization and only operates on wavefunction 
+\begin_inset Formula $\varphi_{p}(z)$
+\end_inset
+
+.
+ For arbitrary state, we have (where we have chosen trap unit by setting
+ 
+\begin_inset Formula $\hbar=m=\omega=1$
+\end_inset
+
+ )
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Formula \begin{eqnarray}
-\frac{d}{dt}\rho_{mn}^{\sigma\sigma'} & = & \frac{h_{1}}{i}\left(\delta_{\sigma\uparrow}-\delta_{\sigma'\uparrow}\right)\rho_{mn}^{\sigma\sigma'}+\frac{h_{2}}{i}\left(\delta_{\sigma\downarrow}-\delta_{\sigma'\downarrow}\right)\rho_{mn}^{\sigma\sigma'}\\
+\frac{d}{dt}\rho_{mn}^{p\sigma q\sigma'} & = & \frac{h_{1}}{i}\left(\delta_{\sigma\uparrow}-\delta_{\sigma'\uparrow}\right)\rho_{mn}^{\sigma\sigma'}+\frac{h_{2}}{i}\left(\delta_{\sigma\downarrow}-\delta_{\sigma'\downarrow}\right)\rho_{mn}^{\sigma\sigma'}\\
  & + & \frac{\Omega}{2i}\left(\delta_{\sigma\uparrow}\sqrt{m+1}\rho_{m+1n}^{\bar{\sigma}\sigma'}+\delta_{\sigma\downarrow}\sqrt{m}\rho_{m-1n}^{\bar{\sigma}\sigma'}-\delta_{\sigma'\uparrow}\sqrt{n+1}\rho_{mn+1}^{\sigma\bar{\sigma'}}-\delta_{\sigma'\downarrow}\sqrt{n}\rho_{mn-1}^{\sigma\bar{\sigma'}}\right)\\
  & + & \varepsilon_{p}\left(\sqrt{m}\rho_{m-1n}^{\sigma\sigma'}-\sqrt{m+1}\rho_{m+1n}^{\sigma\sigma'}+\sqrt{n}\rho_{mn-1}^{\sigma\sigma'}-\sqrt{n+1}\rho_{mn+1}^{\sigma\sigma'}\right)\\
  & - & \frac{\delta_{c}}{i}\left(m-n\right)\rho_{mn}^{\sigma\sigma'}\\
@@ -358,7 +276,7 @@ where
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
@@ -378,7 +296,7 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Explicitly, and without loss of generality, the matrix elements are,
 \begin_inset Formula \begin{eqnarray}
 \frac{d}{dt}\langle m;\uparrow|\rho|n;\uparrow\rangle & = & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\uparrow|\rho|n+1;\downarrow\rangle\right)\nonumber \\
@@ -478,227 +396,6 @@ th element is accessed as
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-For instance, when 
-\begin_inset Formula $N=1$
-\end_inset
-
-, 
-\begin_inset Formula \begin{eqnarray*}
-[M_{mn}^{\uparrow\uparrow}] & = & \left(\begin{array}{cccc}
-0 & -\varepsilon_{p} & -\varepsilon_{p} & 2\kappa\\
-\varepsilon_{p} & -i\delta_{c}-\kappa & 0 & -\varepsilon_{p}\\
-\varepsilon_{p} & 0 & i\delta_{c}-\kappa & -\varepsilon_{p}\\
-0 & \varepsilon_{p} & \varepsilon_{p} & -2\kappa\end{array}\right)\\
-{}[S_{mn}^{1}] & = & \left(\begin{array}{cccc}
-0 & -\frac{\Omega}{2i} & 0 & 0\\
-0 & 0 & 0 & 0\\
-0 & 0 & 0 & -\frac{\Omega}{2i}\\
-0 & 0 & 0 & 0\end{array}\right)\end{eqnarray*}
-
-\end_inset
-
-etc.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-For 
-\begin_inset Formula $N=1$
-\end_inset
-
- and given initial state 
-\begin_inset Formula $\rho_{00}^{\uparrow\uparrow}(t=0)=1$
-\end_inset
-
- and else 
-\begin_inset Formula $0$
-\end_inset
-
-, after some transient time, all matrix elements (16 of them) reach steady
- state, as typically shown in the figure on the left, (absolute values have
- been taken)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename typical_rho.eps
-	scale 50
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename trace_rho.eps
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-On the right, we plot the trace of density matrix 
-\begin_inset Formula $\text{Tr}[\rho_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}=\text{Tr}[\rho_{mn}^{\uparrow\uparrow}]_{(N+1)\times(N+1)}+\text{Tr}[\rho_{mn}^{\downarrow\downarrow}]_{(N+1)\times(N+1)}$
-\end_inset
-
- as a function of time.
- As expected, the trace remains strictly to be 1 throughout time evolution.
- However, the trace of density matrix square 
-\begin_inset Formula $\text{Tr}[\rho^{2}]$
-\end_inset
-
- does not monotonically decreases with time, 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename trace_rho_square.eps
-	scale 50
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename trace_rho_square_kappa0.eps
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This means initially the system is a pure state 
-\begin_inset Formula $|0;\uparrow\rangle$
-\end_inset
-
- where 
-\begin_inset Formula $\text{Tr}\rho^{2}=1$
-\end_inset
-
-, however due to cavity decay, the system becomes a mixed state 
-\begin_inset Formula $\text{Tr}\rho^{2}<1$
-\end_inset
-
-; for comparison, we can set 
-\begin_inset Formula $\kappa=0$
-\end_inset
-
- and evolve the system, to get the plot on the right, where we have pure
- state all the time.
- 
-\end_layout
-
-\begin_layout Standard
-Steady state solution can be obtained by directly requiring the RHS of Eq.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:EOM_rho_matrix"
-
-\end_inset
-
- to be zero.
- Note that, one of the equations is redundant, due to the constraint of
- 
-\begin_inset Formula $\text{Tr}[\rho]=1$
-\end_inset
-
-.
- The expectation value of any observable can be obtained by tracing the
- product of density operator and observable operator, namely 
-\begin_inset Formula $\langle\hat{O}\rangle=\text{Tr}[\rho\hat{O}]$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-One simple case is the expectation value of photon number 
-\begin_inset Formula $\langle n\rangle=\text{Tr}[\rho n]=\text{Tr}\left[[\rho_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}\times[\hat{n}_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}\right]$
-\end_inset
-
- where
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula \begin{equation}
-[\hat{n}_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}=\left[\begin{array}{cccccccc}
-0\\
- & 1\\
- &  & ...\\
- &  &  & N\\
- &  &  &  & 0\\
- &  &  &  &  & 1\\
- &  &  &  &  &  & ...\\
- &  &  &  &  &  &  & N\end{array}\right]\label{eq:photon_number}\end{equation}
-
-\end_inset
-
-since
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\langle m;\sigma|c^{\dagger}c|n;\sigma'\rangle=n\delta_{mn}\delta_{\sigma\sigma'}$
-\end_inset
-
-.
- And, photon number fluctuation 
-\begin_inset Formula $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}=\frac{\langle n^{2}\rangle-\langle n\rangle^{2}}{\langle n\rangle}$
-\end_inset
-
-, where 
-\begin_inset Formula $\langle m;\sigma|c^{\dagger}cc^{\dagger}c|n;\sigma'\rangle=n^{2}\delta_{mn}\delta_{\sigma\sigma'}$
-\end_inset
-
-.
- If 
-\begin_inset Formula $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}>1$
-\end_inset
-
-, it is super-Poissonian; if 
-\begin_inset Formula $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}=1$
-\end_inset
-
-, it is Poissonian; if 
-\begin_inset Formula $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}<1$
-\end_inset
-
-, it is sub-Poissonian.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename average_photon.eps
-	scale 50
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename average_photon_kappa0.eps
-	scale 50
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -707,286 +404,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-However, the average photon number will be slightly different if we have
- different truncation number 
-\begin_inset Formula $N$
-\end_inset
-
-.
- For larger 
-\begin_inset Formula $N$
-\end_inset
-
-, say 
-\begin_inset Formula $N>5$
-\end_inset
-
-, the difference caused by truncation is negligible.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In the following plots, we choose parameters as 
-\begin_inset Formula $\tilde{\delta}=0$
-\end_inset
-
-, 
-\begin_inset Formula $k_{z}=k_{x}=k_{y}=0$
-\end_inset
-
-, 
-\begin_inset Formula $\kappa=1=\varepsilon_{p}=\Omega$
-\end_inset
-
-, 
-\begin_inset Formula $q_{r}=0.22$
-\end_inset
-
-, 
-\begin_inset Formula $\delta_{c}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $N=6$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename photon_decay.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename photon_pump.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename photon_deltac.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/photonFluc_decay.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/photonFluc_pump.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/photonFluc_deltac.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename fluc_kappa.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename fluc_epsilonp.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename fluc_deltac.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename photonN_Omega.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename photonN_Omega_Delta_1n.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename photonN_Omega_Delta_n.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Appendix:
-\end_layout
-
-\begin_layout Plain Layout
-If we only consider pump-cavity coupling, with or without photon decay,
- we may write down the corresponding Hamiltonian as, 
-\begin_inset Formula \begin{equation}
-H_{p-c}=i\varepsilon_{p}(c^{\dagger}e^{-i\omega_{p}t}-ce^{+i\omega_{p}t})+\hbar\omega_{c}c^{\dagger}c-i\kappa c^{\dagger}c.\end{equation}
-
-\end_inset
-
- and E.O.M is given by 
-\begin_inset Formula \begin{equation}
-i\frac{d}{dt}c=[c,H_{p-c}]=i\varepsilon_{p}e^{-i\omega_{p}t}+(\omega_{c}-i\kappa)c\end{equation}
-
-\end_inset
-
-If we adopt mean field approximation, by replacing operator 
-\begin_inset Formula $c$
-\end_inset
-
- by the complex c-number 
-\begin_inset Formula $\langle c\rangle$
-\end_inset
-
-, then the dynamical equation is given by
-\begin_inset Formula \begin{equation}
-i\frac{d}{dt}\langle c\rangle=i\varepsilon_{p}e^{-i\omega_{p}t}+(\omega_{c}-i\kappa)\langle c\rangle\label{eq:cdiff}\end{equation}
-
-\end_inset
-
- and solution is (general case for 
-\begin_inset Formula $\kappa\neq0$
-\end_inset
-
- or 
-\begin_inset Formula $\delta_{c}\neq0$
-\end_inset
-
- ) 
-\begin_inset Formula \begin{equation}
-\langle c\rangle=c_{0}e^{-(i\omega_{c}+\kappa)t}+\frac{i\varepsilon_{p}}{\delta_{c}+i\kappa}e^{-i\omega_{p}t}\end{equation}
-
-\end_inset
-
-where 
-\begin_inset Formula $c_{0}$
-\end_inset
-
- depends on initial condition and 
-\begin_inset Formula $\delta_{c}=\omega_{p}-\omega_{c}$
-\end_inset
-
-.
- Average photon number is then
-\begin_inset Formula \begin{equation}
-|\langle c\rangle|^{2}=|c_{0}|^{2}+\frac{\varepsilon_{p}^{2}}{\delta_{c}^{2}+\kappa^{2}}+i\varepsilon_{p}\left(\frac{c_{0}^{\ast}}{\delta_{c}+i\kappa}e^{-i\delta_{c}t}-\frac{c_{0}}{\delta_{c}-i\kappa}e^{i\delta_{c}t}\right)e^{-\kappa t}\end{equation}
-
-\end_inset
-
-Observations:
-\end_layout
-
-\begin_layout Enumerate
-If 
-\begin_inset Formula $\kappa=0$
-\end_inset
-
- and 
-\begin_inset Formula $\delta_{c}=0$
-\end_inset
-
-, photon number diverges quadratically in time (special case), 
-\begin_inset Formula \begin{eqnarray}
-\langle c\rangle & = & (c_{0}+\varepsilon_{p}t)e^{-i\omega_{p}t}\nonumber \\
-|\langle c\rangle|^{2} & = & |c_{0}+\varepsilon_{p}t|^{2}\label{eq:case1}\end{eqnarray}
-
-\end_inset
-
-Physics: no photon decay, but pump and cavity is in resonance, all the photon
- from the pump is accumulated in the cavity;
-\end_layout
-
-\begin_layout Enumerate
-If 
-\begin_inset Formula $\kappa=0$
-\end_inset
-
- and 
-\begin_inset Formula $\delta_{c}\neq0$
-\end_inset
-
-, photon number is oscillatory in time, (
-\begin_inset Formula $c_{0}\equiv|c_{0}|e^{i\theta}$
-\end_inset
-
-) 
-\begin_inset Formula \begin{equation}
-|\langle c\rangle|^{2}=|c_{0}|^{2}+\frac{\varepsilon_{p}^{2}}{\delta_{c}^{2}}+\frac{2\varepsilon_{p}}{\delta_{c}}|c_{0}|\sin(\delta_{c}t+\theta)\end{equation}
-
-\end_inset
-
-Physics: though no photon decay, but pump and cavity is not in resonance,
- photon number cannot achieve (constant) equilibrium;
-\end_layout
-
-\begin_layout Enumerate
-If 
-\begin_inset Formula $\kappa\neq0$
-\end_inset
-
- and 
-\begin_inset Formula $\delta_{c}=0$
-\end_inset
-
-, photon number reaches a stationary state 
 \family roman
 \series medium
 \shape up
@@ -995,526 +413,132 @@ If
 \bar no
 \noun off
 \color none
-
-\begin_inset Formula $|c_{0}|^{2}+\frac{\varepsilon_{p}^{2}}{\kappa^{2}}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
- after 
-\begin_inset Formula $\sim1/\kappa$
-\end_inset
-
- unit time without oscillations, 
-\begin_inset Formula \begin{equation}
-|\langle c\rangle|^{2}=|c_{0}|^{2}+\frac{\varepsilon_{p}^{2}}{\kappa^{2}}+2|c_{0}|\frac{\varepsilon_{p}}{\kappa}\cos\theta e^{-\kappa t}\end{equation}
+\begin_inset Formula \begin{eqnarray*}
+FirstTerm= & \langle m;p,\sigma|\int dz\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2}+\frac{1}{2}z^{2}+q_{r}k_{z}+\delta\right)\psi_{\uparrow}(z)\rho|n;q,\sigma'\rangle\\
+= & \langle m;p,\sigma|\int dz\sum_{p'}\varphi_{p'}^{\ast}(z)a_{p'\uparrow}^{\dagger}\left(H_{\text{osc}}+\delta-iq_{r}\frac{\partial}{\partial z}\right)\sum_{q'}\varphi_{q'}(z)a_{q'\uparrow}\rho|n;q\sigma'\rangle\\
+= & \sum_{p'q'}\left[\int dz\varphi_{p'}^{\ast}(z)\left(H_{\text{osc}}+\delta-iq_{r}\frac{\partial}{\partial z}\right)\varphi_{q'}(z)\right]\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle\\
+= & \sum_{p'q'}\left[(q'+\frac{1}{2}+\delta)\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)-iq_{r}\int dz\varphi_{p'}^{\ast}(z)\frac{\partial}{\partial z}\varphi_{q'}(z)\right]\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle\end{eqnarray*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Enumerate
-If 
-\begin_inset Formula $\kappa\neq0$
+Easy to have 
+\begin_inset Formula $\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)=\delta_{p'q'}$
 \end_inset
 
- and 
-\begin_inset Formula $\delta_{c}\neq0$
-\end_inset
-
-, (
-\begin_inset Formula $\delta_{c}+i\kappa\equiv\sqrt{\delta_{c}^{2}+\kappa^{2}}e^{i\alpha}$
-\end_inset
-
-), photon number also reaches a stationary state 
-\begin_inset Formula $|c_{0}|^{2}+\frac{\varepsilon_{p}^{2}}{\delta_{c}^{2}+\kappa^{2}}$
-\end_inset
-
- after 
-\begin_inset Formula $\sim1/\kappa$
-\end_inset
-
- unit time, 
-\begin_inset Formula \begin{equation}
-|\langle c\rangle|^{2}=|c_{0}|^{2}+\frac{\varepsilon_{p}^{2}}{\delta_{c}^{2}+\kappa^{2}}+2|c_{0}|\frac{\varepsilon_{p}}{\sqrt{\delta_{c}^{2}+\kappa^{2}}}\sin(\delta_{c}t+\theta+\alpha)e^{-\kappa t}\label{eq:case4}\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-It is easy to see that larger 
-\begin_inset Formula $\varepsilon_{p}$
-\end_inset
-
- corresponds to larger steady state solution for both 3 and 4.
- 
-\end_layout
-
-\begin_layout Plain Layout
-In the following numerical simutions, I have chosen 
-\begin_inset Formula $|c_{0}|=0$
-\end_inset
-
- and 
-\begin_inset Formula $\theta=0$
-\end_inset
-
-, 
-\begin_inset Formula $\varepsilon_{p}=1$
-\end_inset
-
- and solved Eq.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:cdiff"
-
-\end_inset
-
- directly using Runge-Kutta method.
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/c1.eps
-	scale 50
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/c2.eps
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/c3.eps
-	scale 50
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/c4.eps
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename trace_rho_square_Omega.eps
-	scale 40
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename trace_rho_square_Omega_epsilonp.eps
-	scale 40
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/trace_rho_square_Omega_deltac.eps
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Reduced density matrix for photon, 
-\begin_inset Formula $\rho_{\text{photon}}=\text{Tr}_{\text{atom}}[\rho]=[\rho_{mn}^{\uparrow\uparrow}]_{(2N+2)\times(2N+2)}+[\rho_{mn}^{\downarrow\downarrow}]_{(2N+2)\times(2N+2)}$
-\end_inset
-
-; Reduced density matrix for atom, 
-\begin_inset Formula $\rho_{\text{atom}}=\text{Tr}_{\text{photon}}[\rho]=\left(\begin{array}{cc}
-\sum_{n}\rho_{nn}^{\uparrow\uparrow} & \sum_{n}\rho_{nn}^{\uparrow\downarrow}\\
-\sum_{n}\rho_{nn}^{\downarrow\uparrow} & \sum_{n}\rho_{nn}^{\downarrow\downarrow}\end{array}\right)$
+ but more steps to follow for 
+\begin_inset Formula $-iq_{r}\int dz\varphi_{p'}^{\ast}(z)\frac{\partial}{\partial z}\varphi_{q'}(z)$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename trace_rho_photon_square_Omega_kappa.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename trace_rho_square_Omega_epsilonp.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename trace_rho_square_Omega_deltac.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $p(n)$
-\end_inset
-
- is the probability of finding 
-\begin_inset Formula $n$
-\end_inset
-
- photon.
- 
-\begin_inset Formula $p(n)=\langle n|\hat{\rho}_{\text{photon}}|n\rangle=\rho_{nn}^{\uparrow\uparrow}+\rho_{nn}^{\downarrow\downarrow}$
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $p(n)=\langle n|\hat{\rho}|n\rangle=\sum_{\sigma\sigma'}\rho_{nn}^{\sigma\sigma'}=\rho_{nn}^{\uparrow\uparrow}+\rho_{nn}^{\uparrow\downarrow}+\rho_{nn}^{\downarrow\uparrow}+\rho_{nn}^{\downarrow\downarrow}$
-\end_inset
-
---this is wrong.
- because the result should not be a number, it is a matrix.
- should use reduced density matrix instead.
- 
-\end_layout
-
-\end_inset
-
-.
- For coherent light, 
-\begin_inset Formula $p_{\text{coh}}(n)=\frac{\langle n\rangle^{n}}{n!}e^{-\langle n\rangle}$
-\end_inset
-
-; and for thermal light, 
-\begin_inset Formula $p_{\text{th}}(n)=\frac{1}{1+\langle n\rangle}(\frac{\langle n\rangle}{1+\langle n\rangle})^{n}$
-\end_inset
-
-.
- In the following plots, we choose parameters as 
-\begin_inset Formula $\tilde{\delta}=0$
-\end_inset
-
-, 
-\begin_inset Formula $k_{z}=k_{x}=k_{y}=0$
-\end_inset
-
-, 
-\begin_inset Formula $\kappa=1=\varepsilon_{p}=\Omega$
-\end_inset
-
-, 
-\begin_inset Formula $q_{r}=0.22$
-\end_inset
-
-, 
-\begin_inset Formula $\delta_{c}=1$
-\end_inset
-
-, and 
-\begin_inset Formula $N=10$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pn1.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/pn2.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /Users/donglin/Documents/Research/QED_SOC_Quantum/pn3.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename pn_reducedrho_epsilonp_1.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename pn_reducedrho_epsilonp_2.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename pn_reducedrho_epsilonp_3.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The expectation value of 
-\begin_inset Formula $\mathcal{H}_{\text{eff}}({\bf k})$
-\end_inset
-
- is 
-\begin_inset Note Note
-status open
-
-\begin_layout Itemize
-\begin_inset Formula \begin{equation}
-[\mathcal{H}_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}=\left[\begin{array}{cccccccc}
-h_{1} & -i\varepsilon_{p} &  &  & 0 & \frac{\Omega}{2}\\
-i\varepsilon_{p} & h_{1}-\delta_{c} & -\sqrt{2}i\varepsilon_{p} & ... &  & 0 & \frac{\Omega}{2}\sqrt{2} & ...\\
- & \sqrt{2}i\varepsilon_{p} & ... & -\sqrt{N}i\varepsilon_{p} &  &  & 0 & \frac{\Omega}{2}\sqrt{N}\\
- & ... & \sqrt{N}i\varepsilon_{p} & h_{1}-N\delta_{c} &  &  &  & 0\\
-0 &  &  &  & h_{2} & -i\varepsilon_{p}\\
-\frac{\Omega}{2} & 0 &  &  & i\varepsilon_{p} & h_{2}-\delta_{c} & -\sqrt{2}i\varepsilon_{p} & ...\\
- & \frac{\Omega}{2}\sqrt{2} & 0 &  &  & \sqrt{2}i\varepsilon_{p} & ... & -\sqrt{N}i\varepsilon_{p}\\
- & ... & \frac{\Omega}{2}\sqrt{N} & 0 &  & ... & \sqrt{N}i\varepsilon_{p} & h_{2}-N\delta_{c}\end{array}\right]\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-or notationally,
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \begin{eqnarray}
-\langle m;\sigma|\mathcal{H}_{\text{eff}}({\bf k})|n;\sigma'\rangle & = & h_{1}\delta_{mn}\delta_{\sigma\sigma'}\delta_{\sigma'\uparrow}+h_{2}\delta_{mn}\delta_{\sigma\sigma'}\delta_{\sigma'\downarrow}\\
- & + & \frac{\Omega}{2}\left(\sqrt{n}\delta_{mn-1}\delta_{\sigma\bar{\sigma'}}\delta_{\sigma'\downarrow}+\sqrt{n+1}\delta_{mn+1}\delta_{\sigma\bar{\sigma'}}\delta_{\sigma'\uparrow}\right)\\
- & + & i\varepsilon_{p}\left(\sqrt{n+1}\delta_{mn+1}\delta_{\sigma\sigma'}-\sqrt{n}\delta_{mn-1}\delta_{\sigma\sigma'}\right)-\delta_{c}n\delta_{mn}\delta_{\sigma\sigma'}\end{eqnarray}
+ From 
+\begin_inset Formula \[
+\varphi_{q}(z)=\mathcal{A}_{q}H_{q}(z)e^{-\frac{z^{2}}{2}},\quad\mathcal{A}_{q}=\frac{1}{\sqrt{2^{q}q!}}\frac{1}{\pi^{1/4}}.\]
 
 \end_inset
 
 where 
-\begin_inset Formula $h_{1}=\frac{k^{2}}{2}+q_{r}k+\tilde{\delta}$
+\begin_inset Formula $H_{q}(z)$
 \end_inset
 
-, 
-\begin_inset Formula $h_{2}=\frac{k^{2}}{2}-q_{r}k-\tilde{\delta}$
-\end_inset
-
-, and 
-\begin_inset Formula $\bar{\sigma}$
-\end_inset
-
- represents the flip-spin value, for instance 
-\begin_inset Formula $\bar{\uparrow}=\downarrow$
-\end_inset
-
-, 
-\begin_inset Formula $\bar{\downarrow}=\uparrow$
-\end_inset
-
- .
- We denote 
-\begin_inset Formula $H_{C}=i\varepsilon_{p}\left(\sqrt{n+1}\delta_{mn+1}\delta_{\sigma\sigma'}-\sqrt{n}\delta_{mn-1}\delta_{\sigma\sigma'}\right)-\delta_{c}n\delta_{mn}\delta_{\sigma\sigma'}$
-\end_inset
-
-.
- If we include 
-\begin_inset Formula $H_{C}$
-\end_inset
-
- in 
-\begin_inset Formula $\langle H_{\text{eff}}\rangle$
-\end_inset
-
-, we have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename energyOmega1.eps
-	scale 35
+ is the Hermite polynomials, we have 
+\begin_inset Formula \begin{eqnarray*}
+-i\frac{\partial}{\partial z}\varphi_{q}(z) & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(H_{q}'(z)-zH_{q}(z)\right)\\
+ & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(2qH_{q-1}(z)-zH_{q}(z)\right)\\
+ & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(2qH_{q-1}(z)-\frac{1}{2}(H_{q+1}(z)+2qH_{q-1}(z))\right)\\
+ & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(qH_{q-1}(z)-\frac{1}{2}H_{q+1}(z)\right)\\
+ & = & -i\left(q\frac{\mathcal{A}_{q}}{\mathcal{A}_{q-1}}\varphi_{q-1}(z)-\frac{1}{2}\frac{\mathcal{A}_{q}}{\mathcal{A}_{q+1}}\varphi_{q+1}(z)\right)\\
+ & = & -i\left(\sqrt{\frac{q}{2}}\varphi_{q-1}(z)-\sqrt{\frac{q+1}{2}}\varphi_{q+1}(z)\right)\end{eqnarray*}
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename energyOmega5.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename energyOmega6.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If we don't include 
-\begin_inset Formula $H_{C}$
-\end_inset
-
- in 
-\begin_inset Formula $\langle H_{\text{eff}}\rangle$
-\end_inset
-
-, we have
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename energyOmega1_bare.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename energyOmega5_bare.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename energyOmega6_bare.eps
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Negativity for mixed state is defined as 
-\begin_inset Formula $\mathcal{N}(\rho)=\frac{||\rho^{T_{atom}}||_{1}-1}{2}=\frac{\left(\sum\text{eig}[\rho^{T_{\text{atom}}}]\right)-1}{2}=\sum_{i}\frac{|\lambda_{i}|-\lambda_{i}}{2}$
-\end_inset
-
- where 
-\begin_inset Formula $\lambda_{i}$
-\end_inset
-
- are all the eigenvalues of 
-\begin_inset Formula $\rho^{T_{atom}}$
-\end_inset
-
-.
- Namely, nagativity is the absolute sum of negative eigenvalues of 
-\begin_inset Formula $\rho^{T_{atom}}$
-\end_inset
-
-, which vanishes for unentangled states.
- Also, 
-\begin_inset Formula $\rho^{T_{atom}}$
-\end_inset
-
- stands for partial transpose of density matrix with respect to atom party,
+where we have used recurrence relation for Hermite polynomials, including
  
-\begin_inset Formula $\rho^{T_{atom}}=\left(\begin{array}{cc}
-[\rho_{mn}^{\uparrow\uparrow}]^{T} & [\rho_{mn}^{\uparrow\downarrow}]^{T}\\
-{}[\rho_{mn}^{\downarrow\uparrow}]^{T} & [\rho_{mn}^{\downarrow\downarrow}]^{T}\end{array}\right)$
+\begin_inset Formula $H_{n}'(x)=2nH_{n-1}(x)$
+\end_inset
+
+ or 
+\begin_inset Formula $H_{n+1}(x)=2xH_{n}(x)-H_{n}'(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{n+1}(x)=2xH_{n}(x)-2nH_{n-1}(x)$
 \end_inset
 
 .
+ The above result is equivalent to replace 
+\begin_inset Formula $k_{z}=\frac{1}{\sqrt{2}i}(a-a^{\dagger})$
+\end_inset
+
+ and operates it on the wavefunction 
+\begin_inset Formula $\varphi_{p}(z)$
+\end_inset
+
+, namely in one line we can prove,
+\begin_inset Formula \begin{eqnarray*}
+k_{z}\varphi_{q'}(z) & = & \frac{1}{\sqrt{2}i}(a-a^{\dagger})\varphi_{q'}(z)\\
+ & = & -i\frac{1}{\sqrt{2}}\left(\sqrt{q'}\varphi_{q'-1}(z)-\sqrt{q'+1}\varphi_{q'+1}(z)\right)\end{eqnarray*}
+
+\end_inset
+
+Then, we should have 
+\begin_inset Formula $-iq_{r}\int dz\varphi_{p'}^{\ast}(z)\frac{\partial}{\partial z}\varphi_{q'}(z)=-iq_{r}\sqrt{\frac{1}{2}}\int dz\varphi_{p'}^{\ast}(z)(\sqrt{q'}\varphi_{q'-1}(z)-\sqrt{q'+1}\varphi_{q'+1}(z))=-iq_{r}\sqrt{\frac{1}{2}}(\sqrt{q'}\delta_{p',q'-1}-\sqrt{q'+1}\delta_{p',q'+1})$
+\end_inset
+
+.
+ Also, note that 
+\begin_inset Formula \begin{eqnarray*}
+\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle & = & \delta_{p',p}\delta_{\sigma,\uparrow}\langle m;\text{vac}|a_{q'\uparrow}\rho|n;q\sigma'\rangle\\
+ & = & \delta_{p',p}\delta_{\sigma,\uparrow}\langle m;q'\uparrow|\rho|n;q\sigma'\rangle\\
+ & = & \delta_{p',p}\delta_{\sigma,\uparrow}\rho_{mn}^{q'\sigma q\sigma'}\end{eqnarray*}
+
+\end_inset
+
+To avoid confusion, we have to point out one subtle difference between 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{q\sigma}$
+\end_inset
+
+, where 
+\begin_inset Formula $a$
+\end_inset
+
+ is the lowering operator for the harmonic oscillator state and 
+\begin_inset Formula $a_{q\sigma}$
+\end_inset
+
+ is the atom number annhilation operator at oscillator state 
+\begin_inset Formula $q$
+\end_inset
+
+ and spin 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $a\varphi_{q}(z)=\sqrt{q}\varphi_{q-1}(z)$
+\end_inset
+
+, but 
+\begin_inset Formula $a_{q\sigma}|n;p\sigma'\rangle=\delta_{q,p}\delta_{\sigma,\sigma'}|n;\text{vac}\rangle$
+\end_inset
+
+ and there is no 
+\begin_inset Formula $\sqrt{p}$
+\end_inset
+
+ term as a prefactor! Wrapping it up, the first term is massaged into 
+\begin_inset Formula \begin{eqnarray*}
+ & \delta_{\sigma,\uparrow}\sum_{p'q'}\left[\left(q'+\frac{1}{2}+\delta\right)\delta_{p'q'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q'}\delta_{p',q'-1}-\sqrt{q'+1}\delta_{p',q'+1}\right)\right]\delta_{p',p}\rho_{mn}^{q'\sigma q\sigma'}\\
+= & \left(p+\frac{1}{2}+\delta\right)\rho_{mn}^{p\uparrow q\sigma'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{p+1\uparrow q\sigma'}-\sqrt{p}\rho_{mn}^{p-1\uparrow q\sigma'}\right)\end{eqnarray*}
+
+\end_inset
+
+and the rest of terms could be followed similarly.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename negativity_kappa.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename negativity_epsilonp.eps
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename negativity_deltac.eps
-	scale 35
-
-\end_inset
-
-
 \end_layout
 
 \end_body
