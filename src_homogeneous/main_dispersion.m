@@ -12,8 +12,8 @@ kr=0.22;kappa=1;
 eta=1.0;          % eta=epsilon_p/kappa
 deltac=1.0;       % delta_c is the pump-cavity detuning
 delta=0.0;     % delta   is the two-photon  detuning
-aOmega=0.1:0.1:5;
-aqz=-4:.1:4;
+aOmega=0.05;
+aqz=-1/2:.001:1/2;
 Eq_data=zeros(4,length(aOmega),length(aqz));
 %Framerecording=struct('cdata', [],'colormap', []);
 nOmega=1;
@@ -42,7 +42,7 @@ Omega2=Omega;           % Omega2 is the cavity feedback. They are the same
     end
     set(gca,'fontsize',20)
 %     axis([min(aqz) max(aqz) -2 4])
-axis([min(aqz)/0.22 max(aqz)/0.22 -1 4])
+axis([min(aqz)/kr max(aqz)/kr -0.05 0.1])
     hold off
 %     plot(aqz,aqz.^2/2+sqrt((kr*aqz+delta).^2+(Omega/2)^2*eta^2/(1+deltac^2)),'r',...
 %         aqz,aqz.^2/2-sqrt((kr*aqz+delta).^2+(Omega/2)^2*eta^2/(1+deltac^2)),'b',...
@@ -54,7 +54,7 @@ axis([min(aqz)/0.22 max(aqz)/0.22 -1 4])
     drawnow
 %    Framerecording(nOmega) = getframe(gcf);
      %saveas(figure(1),['Omega',num2str(Omega),'deltac',num2str(deltac),'.eps'],'epsc')
-     save result.mat
+     %save result.mat
 end
 
 % movie2avi(Framerecording, 'loop.avi', 'compression', 'None'...

@@ -1,8 +1,8 @@
 % photon number calculation
 % data from result.mat
-clear
-clc
-load result.mat
+% clear
+% clc
+% load result.mat
 % aOmega=1:0.5:10;
 for Omega =aOmega
 Omega2=Omega;
@@ -37,12 +37,12 @@ figure(nOmega)
 %clf
 hold on
 for nn=1:4
-    scatter(aqz,photon(nn,:),'b.')
+    scatter(aqz/kr,photon(nn,:),'b.')
 end
 set(gca,'fontsize',16)
 xlabel('q_z/k_r')
 ylabel('average photon number |<c>|^2')
-axis([min(aqz) max(aqz) 0 3])
+axis([min(aqz)/kr max(aqz)/kr 0.48 0.52])
 title(['\Omega=',num2str(Omega),...
         '     \delta_c=',num2str(deltac)])
 %saveas(figure(nOmega),['photon_',num2str(nOmega),'.eps'],'epsc')
