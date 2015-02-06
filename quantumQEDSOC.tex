@@ -1,0 +1,256 @@
+%% LyX 1.6.6.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{paper}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=1.2in,lmargin=0.5in,rmargin=0.5in,headsep=0.2in}
+\usepackage{amstext}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\def\pa{\partial}
+\def\r{\textbf{r}}
+\def\k{\textbf{k}}
+\def\q{\textbf{q}}
+\def\p{\textbf{p}}
+\def\R{\textbf{R}}
+\def\s{\sigma}
+\def\u{\uparrow}
+\def\d{\downarrow}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+\title{Quantum version of the model, by Lin Dong, 10/31/13}
+
+\maketitle
+In this note, we consider the quantum version of the cavity-assisted
+SOC model, where photon and atom field is not treated as a mean field
+variable. 
+
+Using bare atomic psedo-spin operater $\Psi_{\sigma}({\bf r})$ and
+photon field operater $c$ (without explicit time dependence), we
+can write the atom-cavity Hamiltonian as, \begin{eqnarray}
+H & = & \sum_{\sigma}\int d{\bf r}\left[\Psi_{\sigma}^{\dagger}({\bf r})\left(\frac{\hbar^{2}\hat{{\bf k}}^{2}}{2m}+\epsilon_{\sigma}^{0}\right)\Psi_{\sigma}({\bf r})\right]\nonumber \\
+ & + & \frac{\Omega}{2}\int d{\bf r}e^{+2i\hbar q_{r}z}\Psi_{\uparrow}^{\dagger}({\bf r})\Psi_{\downarrow}({\bf r})\tilde{c}e^{+i\omega_{R}t}\nonumber \\
+ & + & \frac{\Omega}{2}\int d{\bf r}e^{-2i\hbar q_{r}z}\tilde{c}^{\dagger}\Psi_{\downarrow}^{\dagger}({\bf r})\Psi_{\uparrow}({\bf r})e^{-i\omega_{R}t}\nonumber \\
+ & + & i\varepsilon_{p}(\tilde{c}^{\dagger}e^{-i\omega_{p}t}-\tilde{c}e^{+i\omega_{p}t})+\hbar\omega_{c}\tilde{c}^{\dagger}\tilde{c}.\end{eqnarray}
+We work in rotating frame $c=\tilde{c}e^{+i\omega_{p}t}$ and gauge
+transformation $\tilde{\psi}_{\uparrow}=\Psi_{\uparrow}e^{-i\hbar q_{r}z}$,
+$\tilde{\psi}_{\downarrow}=\Psi_{\downarrow}e^{+i\hbar q_{r}z}$ .
+After unitary transformation of origional Hamiltonian, we can write
+\begin{eqnarray}
+\mathcal{H}_{\text{eff}} & = & \int d{\bf r}\left(\begin{array}{cc}
+\tilde{\psi}_{\uparrow}^{\dagger}({\bf r}) & \tilde{\psi}_{\downarrow}^{\dagger}({\bf r})\end{array}\right)\left[\frac{\hbar^{2}\hat{{\bf k}}^{2}}{2m}+\frac{\hbar^{2}}{m}q_{r}\hat{k_{z}}\sigma_{z}+\tilde{\delta}\sigma_{z}\right]\left(\begin{array}{c}
+\tilde{\psi}_{\uparrow}({\bf r})\\
+\tilde{\psi}_{\downarrow}({\bf r})\end{array}\right)\nonumber \\
+ & + & \int d{\bf r}\frac{\Omega}{2}\tilde{\psi}_{\uparrow}^{\dagger}({\bf r})\tilde{\psi}_{\downarrow}({\bf r})\tilde{c}+\int d{\bf r}\frac{\Omega}{2}c^{\dagger}\tilde{\psi}_{\downarrow}^{\dagger}({\bf r})\tilde{\psi}_{\uparrow}({\bf r})\nonumber \\
+ & + & i\varepsilon_{p}(c^{\dagger}-c)-\hbar\delta_{c}c^{\dagger}c\end{eqnarray}
+where $\delta_{c}=\omega_{p}-\omega_{c}$ and we have neglected constant
+energy $\frac{\hbar^{2}q_{r}^{2}}{2m}$ and incorprated energy shift
+of two-photon detunning into $\tilde{\delta}=\delta_{R}/2+(\epsilon_{\uparrow}^{0}-\epsilon_{\downarrow}^{0})$
+and $\delta_{R}=\omega_{p}-\omega_{R}$. 
+
+As we consider external pumping, we shall deal with disspation of
+cavity decay in terms of density operator approach. Generally dissipation
+process is modeled by Liouvillean term $\mathcal{L}$ appearing in
+the master equation (where we only consider cavity decay and neglect
+effect of spontaneous emission), \begin{equation}
+\dot{\rho}=\frac{1}{i\hbar}[\mathcal{H}_{\text{eff}},\rho]+\mathcal{L}\rho\end{equation}
+where \begin{equation}
+\mathcal{L}\rho=\kappa(2c\rho c^{\dagger}-c^{\dagger}c\rho-\rho c^{\dagger}c).\end{equation}
+
+
+For the homogeneous system, momentum operator $\hat{{\bf k}}$ commutes
+with $\mathcal{H}_{\text{eff}}$, and we can decouple each momentum
+eigenstate using the ansartz $\tilde{\psi}_{\sigma}({\bf k})=e^{i{\bf k}\cdot{\bf r}}\psi_{\sigma}$.
+For given momentum (as a good quantum number), we work with the Hamiltonian
+in subspace of ${\bf k}$, \begin{eqnarray}
+\mathcal{H}_{\text{eff}}({\bf k}) & = & \sum_{\sigma}\left(\frac{{\bf k}^{2}}{2m}+\alpha\frac{q_{r}k_{z}}{m}+\alpha\tilde{\delta}\right)\psi_{\sigma}^{\dagger}\psi_{\sigma}+\frac{\Omega}{2}\left(\psi_{\uparrow}^{\dagger}\psi_{\downarrow}c+c^{\dagger}\psi_{\downarrow}^{\dagger}\psi_{\uparrow}\right)\nonumber \\
+ & + & i\varepsilon_{p}(c^{\dagger}-c)-\delta_{c}c^{\dagger}c\end{eqnarray}
+where $\alpha=\pm1$ for $\sigma=\uparrow,\downarrow$ respectively. 
+
+Then, we iron out the commutator explicitly as, \begin{eqnarray}
+[\mathcal{H}_{\text{eff}}({\bf k}),\rho] & = & \left(\frac{{\bf k}^{2}}{2m}+\frac{q_{r}k_{z}}{m}+\tilde{\delta}\right)\left(\psi_{\uparrow}^{\dagger}\psi_{\uparrow}\rho-\rho\psi_{\uparrow}^{\dagger}\psi_{\uparrow}\right)+\left(\frac{{\bf k}^{2}}{2m}-\frac{q_{r}k_{z}}{m}-\tilde{\delta}\right)\left(\psi_{\downarrow}^{\dagger}\psi_{\downarrow}\rho-\rho\psi_{\downarrow}^{\dagger}\psi_{\downarrow}\right)\\
+ & + & \frac{\Omega}{2}\left(\psi_{\uparrow}^{\dagger}\psi_{\downarrow}c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}\psi_{\uparrow}\rho-\rho\psi_{\uparrow}^{\dagger}\psi_{\downarrow}c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}\psi_{\uparrow}\right)+i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right).\end{eqnarray}
+
+
+For few photons, the quantum phenomena shall be more prominant.
+
+
+
+To this end, we choose our basis states as $|n;\sigma\rangle$ where
+$n=0,1,2,...N$ where $N$ is the truncation number and $\sigma=\uparrow,\downarrow$.
+Our goal is to calculate matrix elements of density operator under
+this basis $\langle m;\sigma|\rho|n;\sigma'\rangle\equiv\rho_{mn}^{\sigma\sigma'}$.
+Rules for creation and annilation operators are \begin{eqnarray*}
+c|n;\sigma'\rangle & = & \sqrt{n}|n-1;\sigma'\rangle,\quad c^{\dagger}|n;\sigma'\rangle=\sqrt{n+1}|n+1;\sigma'\rangle\\
+\langle m;\sigma|c & = & \sqrt{m+1}\langle m+1;\sigma|,\langle m;\sigma|c^{\dagger}=\sqrt{m}\langle m-1;\sigma|.\end{eqnarray*}
+In the $\mathcal{H}_{\text{eff}}$, Raman term involves spin flipping
+and cavity photon coupling, whereas the rest of terms involve cavity
+photon coupling only. For arbitrary state, we have\begin{eqnarray}
+\frac{d}{dt}\rho_{mn}^{\sigma\sigma'} & = & \frac{h_{1}}{i}\left(\delta_{\sigma\uparrow}-\delta_{\sigma'\uparrow}\right)\rho_{mn}^{\sigma\sigma'}+\frac{h_{2}}{i}\left(\delta_{\sigma\downarrow}-\delta_{\sigma'\downarrow}\right)\rho_{mn}^{\sigma\sigma'}\\
+ & + & \frac{\Omega}{2i}\left(\delta_{\sigma\uparrow}\sqrt{m+1}\rho_{m+1n}^{\bar{\sigma}\sigma'}+\delta_{\sigma\downarrow}\sqrt{m}\rho_{m-1n}^{\bar{\sigma}\sigma'}-\delta_{\sigma'\uparrow}\sqrt{n+1}\rho_{mn+1}^{\sigma\bar{\sigma'}}-\delta_{\sigma'\downarrow}\sqrt{n}\rho_{mn-1}^{\sigma\bar{\sigma'}}\right)\\
+ & + & \varepsilon_{p}\left(\sqrt{m}\rho_{m-1n}^{\sigma\sigma'}-\sqrt{m+1}\rho_{m+1n}^{\sigma\sigma'}+\sqrt{n}\rho_{mn-1}^{\sigma\sigma'}-\sqrt{n+1}\rho_{mn+1}^{\sigma\sigma'}\right)\\
+ & - & \frac{\delta_{c}}{i}\left(m-n\right)\rho_{mn}^{\sigma\sigma'}\\
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{m+1n+1}^{\sigma\sigma'}-(m+n)\rho_{mn}^{\sigma\sigma'}\right)\end{eqnarray}
+where $h_{1}=\frac{k^{2}}{2}+q_{r}k+\tilde{\delta}$, $h_{2}=\frac{k^{2}}{2}-q_{r}k-\tilde{\delta}$,
+and $\bar{\sigma}$ represents the flip-spin value, for instance $\bar{\uparrow}=\downarrow$,
+$\bar{\downarrow}=\uparrow$ . 
+
+
+
+Explicitly, and without loss of generality, the matrix elements are,\begin{eqnarray}
+\frac{d}{dt}\langle m;\uparrow|\rho|n;\uparrow\rangle & = & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\uparrow|\rho|n+1;\downarrow\rangle\right)\nonumber \\
+ & + & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\uparrow|\rho|n;\uparrow\rangle-\sqrt{m+1}\langle m+1;\uparrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\uparrow|\rho|n+1;\uparrow\rangle+\sqrt{n}\langle m;\uparrow|\rho|n-1;\uparrow\rangle\right)\nonumber \\
+ & - & \frac{1}{i\hbar}\delta_{c}\left(m-n\right)\langle m;\uparrow|\rho|n;\uparrow\rangle\nonumber \\
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\uparrow|\rho|n+1;\uparrow\rangle-(m+n)\langle m;\uparrow|\rho|n;\uparrow\rangle\right)\\
+\frac{d}{dt}\langle m;\downarrow|\rho|n;\downarrow\rangle & = & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m}\langle m-1;\uparrow|\rho|n;\downarrow\rangle-\sqrt{n}\langle m;\downarrow|\rho|n-1;\uparrow\rangle\right)\nonumber \\
+ & + & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\downarrow|\rho|n;\downarrow\rangle-\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\downarrow\rangle-\sqrt{n+1}\langle m;\downarrow|\rho|n+1;\downarrow\rangle+\sqrt{n}\langle m;\downarrow|\rho|n-1;\downarrow\rangle\right)\nonumber \\
+ & - & \frac{1}{i\hbar}\delta_{c}\left(m-n\right)\langle m;\downarrow|\rho|n;\downarrow\rangle\nonumber \\
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\downarrow|\rho|n+1;\downarrow\rangle-(m+n)\langle m;\downarrow|\rho|n;\downarrow\rangle\right)\\
+\frac{d}{dt}\langle m;\uparrow|\rho|n;\downarrow\rangle & = & +\frac{1}{i\hbar}2\left(q_{r}k_{z}+\tilde{\delta}\right)\langle m;\uparrow|\rho|n;\downarrow\rangle\nonumber \\
+ & + & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\downarrow\rangle-\sqrt{n}\langle m;\uparrow|\rho|n-1;\uparrow\rangle\right)\nonumber \\
+ & + & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\uparrow|\rho|n;\downarrow\rangle-\sqrt{m+1}\langle m+1;\uparrow|\rho|n;\downarrow\rangle-\sqrt{n+1}\langle m;\uparrow|\rho|n+1;\downarrow\rangle+\sqrt{n}\langle m;\uparrow|\rho|n-1;\downarrow\rangle\right)\nonumber \\
+ & - & \frac{1}{i\hbar}\delta_{c}\left(m-n\right)\langle m;\uparrow|\rho|n;\downarrow\rangle\nonumber \\
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\uparrow|\rho|n+1;\downarrow\rangle-(m+n)\langle m;\uparrow|\rho|n;\downarrow\rangle\right)\\
+\frac{d}{dt}\langle m;\downarrow|\rho|n;\uparrow\rangle & = & -\frac{1}{i\hbar}2\left(q_{r}k_{z}+\tilde{\delta}\right)\langle m;\downarrow|\rho|n;\uparrow\rangle\nonumber \\
+ & + & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m}\langle m-1;\uparrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\downarrow|\rho|n+1;\downarrow\rangle\right)\nonumber \\
+ & + & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\downarrow|\rho|n+1;\uparrow\rangle+\sqrt{n}\langle m;\downarrow|\rho|n-1;\uparrow\rangle\right)\nonumber \\
+ & - & \frac{1}{i\hbar}\delta_{c}(m-n)\langle m;\downarrow|\rho|n;\uparrow\rangle\nonumber \\
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\downarrow|\rho|n+1;\uparrow\rangle-(m+n)\langle m;\downarrow|\rho|n;\uparrow\rangle\right)\end{eqnarray}
+Notationally, \begin{equation}
+[\rho_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}=\left(\begin{array}{cc}
+[\rho_{mn}^{\uparrow\uparrow}]_{(N+1)\times(N+1)} & [\rho_{mn}^{\uparrow\downarrow}]_{(N+1)\times(N+1)}\\
+{}[\rho_{mn}^{\downarrow\uparrow}]_{(N+1)\times(N+1)} & [\rho_{mn}^{\downarrow\downarrow}]_{(N+1)\times(N+1)}\end{array}\right)\end{equation}
+In the column of $[\rho_{mn}^{\sigma\sigma'}]_{(N+1)^{2}\times1}$,
+the $k$th element is accessed as $k=m(N+1)+(n+1)$. Since we have
+finite truncation number $N$, we shall ignore terms involving $|N+1;\sigma\rangle$
+or $|-1;\sigma\rangle$ generated by photon creation or annilation
+operators, as they either hit the ceiling or floor of our truncated
+Hilbert space. We then further write EOM of density matrix as\begin{equation}
+\frac{d}{dt}\left(\begin{array}{c}
+[\rho_{mn}^{\uparrow\uparrow}]_{(N+1)^{2}\times1}\\
+{}[\rho_{mn}^{\uparrow\downarrow}]_{(N+1)^{2}\times1}\\
+{}[\rho_{mn}^{\downarrow\uparrow}]_{(N+1)^{2}\times1}\\
+{}[\rho_{mn}^{\downarrow\downarrow}]_{(N+1)^{2}\times1}\end{array}\right)_{(2N+2)^{2}\times1}=\left(\begin{array}{cccc}
+[M_{mn}^{\uparrow\uparrow}] & [S_{mn}^{1}] & [S_{mn}^{2}] & 0\\
+{}[S_{mn}^{3}] & [M_{mn}^{\uparrow\downarrow}] & 0 & [S_{mn}^{4}]\\
+{}[S_{mn}^{5}] & 0 & [M_{mn}^{\downarrow\uparrow}] & [S_{mn}^{6}]\\
+0 & [S_{mn}^{7}] & [S_{mn}^{8}] & [M_{mn}^{\downarrow\downarrow}]\end{array}\right)_{(2N+2)^{2}\times(2N+2)^{2}}\left(\begin{array}{c}
+[\rho_{mn}^{\uparrow\uparrow}]\\
+{}[\rho_{mn}^{\uparrow\downarrow}]\\
+{}[\rho_{mn}^{\downarrow\uparrow}]\\
+{}[\rho_{mn}^{\downarrow\downarrow}]\end{array}\right)_{(2N+2)^{2}\times1}\label{eq:EOM_rho_matrix}\end{equation}
+ 
+
+For $N=1$ and given initial state $\rho_{00}^{\uparrow\uparrow}(t=0)=1$
+and else $0$, after some transient time, all matrix elements (16
+of them) reach steady state, as typically shown in the figure on the
+left, (absolute values have been taken)
+
+\includegraphics[scale=0.5]{typical_rho}\includegraphics[scale=0.5]{trace_rho}
+
+On the right, we plot the trace of density matrix $\text{Tr}[\rho_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}=\text{Tr}[\rho_{mn}^{\uparrow\uparrow}]_{(N+1)\times(N+1)}+\text{Tr}[\rho_{mn}^{\downarrow\downarrow}]_{(N+1)\times(N+1)}$
+as a function of time. As expected, the trace remains strictly to
+be 1 throughout time evolution. However, the trace of density matrix
+square $\text{Tr}[\rho^{2}]$ does not monotonically decreases with
+time, 
+
+\includegraphics[scale=0.5]{trace_rho_square}\includegraphics[scale=0.5]{trace_rho_square_kappa0}
+
+This means initially the system is a pure state $|0;\uparrow\rangle$
+where $\text{Tr}\rho^{2}=1$, however due to cavity decay, the system
+becomes a mixed state $\text{Tr}\rho^{2}<1$; for comparison, we can
+set $\kappa=0$ and evolve the system, to get the plot on the right,
+where we have pure state all the time. 
+
+Steady state solution can be obtained by directly requiring the RHS
+of Eq. \ref{eq:EOM_rho_matrix} to be zero. Note that, one of the
+equations is redundant, due to the constraint of $\text{Tr}[\rho]=1$.
+The expectation value of any observable can be obtained by tracing
+the product of density operator and observable operator, namely $\langle\hat{O}\rangle=\text{Tr}[\rho\hat{O}]$. 
+\begin{itemize}
+\item One simple case is the expectation value of photon number $\langle n\rangle=\text{Tr}[\rho n]=\text{Tr}\left[[\rho_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}\times[\hat{n}_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}\right]$
+where $\langle m;\sigma|c^{\dagger}c|n;\sigma'\rangle=n\delta_{mn}\delta_{\sigma\sigma'}$.
+And, photon number fluctuation $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}=\frac{\langle n^{2}\rangle-\langle n\rangle^{2}}{\langle n\rangle}$,
+where $\langle m;\sigma|c^{\dagger}cc^{\dagger}c|n;\sigma'\rangle=n^{2}\delta_{mn}\delta_{\sigma\sigma'}$.
+If $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}>1$, it
+is super-Poissonian; if $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}=1$,
+it is Poissonian; if $\frac{\langle(\Delta n)^{2}\rangle}{\langle n\rangle}<1$,
+it is sub-Poissonian. 
+\end{itemize}
+
+
+
+
+In the following plots, we choose parameters as $\tilde{\delta}=0$,
+$k_{z}=k_{x}=k_{y}=0$, $\kappa=1=\varepsilon_{p}=\Omega$, $q_{r}=0.22$,
+$\delta_{c}=1$, and $N=6$. 
+
+\includegraphics[scale=0.35]{photon_decay}\includegraphics[scale=0.35]{photon_pump}\includegraphics[scale=0.35]{photon_deltac}
+
+\includegraphics[scale=0.35]{/Users/donglin/Documents/Research/QED_SOC_Quantum/photonFluc_decay}\includegraphics[scale=0.35]{/Users/donglin/Documents/Research/QED_SOC_Quantum/photonFluc_pump}\includegraphics[scale=0.35]{/Users/donglin/Documents/Research/QED_SOC_Quantum/photonFluc_deltac}
+
+\includegraphics[scale=0.35]{fluc_kappa}\includegraphics[scale=0.35]{fluc_epsilonp}\includegraphics[scale=0.35]{fluc_deltac}
+
+\includegraphics[scale=0.35]{photonN_Omega}\includegraphics[scale=0.35]{photonN_Omega_Delta_1n}\includegraphics[scale=0.35]{photonN_Omega_Delta_n}
+
+
+
+
+\begin{itemize}
+\item Reduced density matrix for photon, $\rho_{\text{photon}}=\text{Tr}_{\text{atom}}[\rho]=[\rho_{mn}^{\uparrow\uparrow}]_{(2N+2)\times(2N+2)}+[\rho_{mn}^{\downarrow\downarrow}]_{(2N+2)\times(2N+2)}$;
+Reduced density matrix for atom, $\rho_{\text{atom}}=\text{Tr}_{\text{photon}}[\rho]=\left(\begin{array}{cc}
+\sum_{n}\rho_{nn}^{\uparrow\uparrow} & \sum_{n}\rho_{nn}^{\uparrow\downarrow}\\
+\sum_{n}\rho_{nn}^{\downarrow\uparrow} & \sum_{n}\rho_{nn}^{\downarrow\downarrow}\end{array}\right)$.
+\end{itemize}
+\includegraphics[scale=0.35]{trace_rho_photon_square_Omega_kappa}\includegraphics[scale=0.35]{trace_rho_square_Omega_epsilonp}\includegraphics[scale=0.35]{trace_rho_square_Omega_deltac}
+\begin{itemize}
+\item $p(n)$ is the probability of finding $n$ photon. $p(n)=\langle n|\hat{\rho}_{\text{photon}}|n\rangle=\rho_{nn}^{\uparrow\uparrow}+\rho_{nn}^{\downarrow\downarrow}$.
+For coherent light, $p_{\text{coh}}(n)=\frac{\langle n\rangle^{n}}{n!}e^{-\langle n\rangle}$;
+and for thermal light, $p_{\text{th}}(n)=\frac{1}{1+\langle n\rangle}(\frac{\langle n\rangle}{1+\langle n\rangle})^{n}$.
+In the following plots, we choose parameters as $\tilde{\delta}=0$,
+$k_{z}=k_{x}=k_{y}=0$, $\kappa=1=\varepsilon_{p}=\Omega$, $q_{r}=0.22$,
+$\delta_{c}=1$, and $N=10$. 
+\end{itemize}
+
+
+\includegraphics[scale=0.35]{pn_reducedrho_epsilonp_1}\includegraphics[scale=0.35]{pn_reducedrho_epsilonp_2}\includegraphics[scale=0.35]{pn_reducedrho_epsilonp_3}
+\begin{itemize}
+\item The expectation value of $\mathcal{H}_{\text{eff}}({\bf k})$ is 
+\end{itemize}
+\begin{eqnarray}
+\langle m;\sigma|\mathcal{H}_{\text{eff}}({\bf k})|n;\sigma'\rangle & = & h_{1}\delta_{mn}\delta_{\sigma\sigma'}\delta_{\sigma'\uparrow}+h_{2}\delta_{mn}\delta_{\sigma\sigma'}\delta_{\sigma'\downarrow}\\
+ & + & \frac{\Omega}{2}\left(\sqrt{n}\delta_{mn-1}\delta_{\sigma\bar{\sigma'}}\delta_{\sigma'\downarrow}+\sqrt{n+1}\delta_{mn+1}\delta_{\sigma\bar{\sigma'}}\delta_{\sigma'\uparrow}\right)\\
+ & + & i\varepsilon_{p}\left(\sqrt{n+1}\delta_{mn+1}\delta_{\sigma\sigma'}-\sqrt{n}\delta_{mn-1}\delta_{\sigma\sigma'}\right)-\delta_{c}n\delta_{mn}\delta_{\sigma\sigma'}\end{eqnarray}
+where $h_{1}=\frac{k^{2}}{2}+q_{r}k+\tilde{\delta}$, $h_{2}=\frac{k^{2}}{2}-q_{r}k-\tilde{\delta}$,
+and $\bar{\sigma}$ represents the flip-spin value, for instance $\bar{\uparrow}=\downarrow$,
+$\bar{\downarrow}=\uparrow$ . We denote $H_{C}=i\varepsilon_{p}\left(\sqrt{n+1}\delta_{mn+1}\delta_{\sigma\sigma'}-\sqrt{n}\delta_{mn-1}\delta_{\sigma\sigma'}\right)-\delta_{c}n\delta_{mn}\delta_{\sigma\sigma'}$.
+If we include $H_{C}$ in $\langle H_{\text{eff}}\rangle$, we have
+
+\includegraphics[scale=0.35]{energyOmega1}\includegraphics[scale=0.35]{energyOmega5}\includegraphics[scale=0.35]{energyOmega6}
+
+If we don't include $H_{C}$ in $\langle H_{\text{eff}}\rangle$,
+we have
+
+\includegraphics[scale=0.35]{energyOmega1_bare}\includegraphics[scale=0.35]{energyOmega5_bare}\includegraphics[scale=0.35]{energyOmega6_bare}
+\begin{itemize}
+\item Negativity for mixed state is defined as $\mathcal{N}(\rho)=\frac{||\rho^{T_{atom}}||_{1}-1}{2}=\frac{\left(\sum\text{eig}[\rho^{T_{\text{atom}}}]\right)-1}{2}=\sum_{i}\frac{|\lambda_{i}|-\lambda_{i}}{2}$
+where $\lambda_{i}$ are all the eigenvalues of $\rho^{T_{atom}}$.
+Namely, nagativity is the absolute sum of negative eigenvalues of
+$\rho^{T_{atom}}$, which vanishes for unentangled states. Also, $\rho^{T_{atom}}$
+stands for partial transpose of density matrix with respect to atom
+party, $\rho^{T_{atom}}=\left(\begin{array}{cc}
+[\rho_{mn}^{\uparrow\uparrow}]^{T} & [\rho_{mn}^{\uparrow\downarrow}]^{T}\\
+{}[\rho_{mn}^{\downarrow\uparrow}]^{T} & [\rho_{mn}^{\downarrow\downarrow}]^{T}\end{array}\right)$. 
+\end{itemize}
+\includegraphics[scale=0.35]{negativity_kappa}\includegraphics[scale=0.35]{negativity_epsilonp}\includegraphics[scale=0.35]{negativity_deltac}
+\end{document}
