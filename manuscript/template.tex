@@ -141,11 +141,11 @@ where $\psi_\sigma({\bf r})$ ($\sigma = \uparrow$, $\downarrow$) is the atomic o
 
 From the Hamiltonian~(\ref{effH}), one can easily obtain the EOM in Heisenberg picture. To make some progress, we adopt a mean-field approximation by replacing the operators by their respective expectation values: $c \rightarrow \langle c \rangle \,, \psi_\sigma ({\bf r}) \rightarrow \langle \psi_\sigma ({\bf r}) \rangle \equiv \varphi_\sigma ({\bf r})$. The mean-field approximation is justified by assuming small quantum fluctuations of both operators $c$ and $\psi_\sigma({\bf r})$. Assuming spatial homogeneity, we further take the plane-wave ansatz for the atomic modes $\varphi_\sigma({\bf r})=e^{i{\bf k}\cdot{\bf r}}\varphi_\sigma$ with the normalization condition $|\varphi_\uparrow|^2+|\varphi_\downarrow|^2=\mathcal{N}$. The steady-state solution for the photon field is obtained by taking the time derivative of the photon field to be zero. This is known as adiabatic elimination, which essentially assumes cavity photon can always follow atom's instantaneous eigenstates, typically valid for current high-Q cavity experiments. After some algebra, we have the coupled nonlinear time-dependent equations for the two spin components, 
 \ba
-i\dot{\varphi}_{\uparrow}&\!\! =\!\! & \left(\frac{{\bf k}^{2}}{2m}+q_{r}k_{z}+\tilde{\delta}\right) \varphi_{\uparrow}+\frac{\Omega}{2}\frac{\varepsilon_{p}-\frac{i\Omega}{2} \varphi_\downarrow^\ast\varphi_\uparrow}{\kappa-i\delta_{c}}\varphi_{\downarrow} \,,\label{EOMphi1}\\
-i\dot{\varphi}_{\downarrow} & \!\!= \!\!& \left(\frac{{\bf k}^{2}}{2m}-q_{r}k_{z}-\tilde{\delta}\right)\varphi_{\downarrow}+\frac{\Omega}{2}\frac{\varepsilon_{p}+\frac{i\Omega}{2} \varphi_\uparrow^\ast\varphi_\downarrow}{\kappa+i\delta_{c}}\varphi_{\uparrow}\,.\label{EOMphi2}
+i\dot{\varphi}_{\uparrow}&\!\! =\!\! & \left(\frac{{\bf k}^{2}}{2m}+q_{r}k_{z}+\tilde{\delta}\right) \varphi_{\uparrow}+\frac{\Omega}{2}\frac{\varepsilon_{p}-\frac{i\Omega}{2} \mathcal{N}\varphi_\downarrow^\ast\varphi_\uparrow}{\kappa-i\delta_{c}}\varphi_{\downarrow} \,,\label{EOMphi1}\\
+i\dot{\varphi}_{\downarrow} & \!\!= \!\!& \left(\frac{{\bf k}^{2}}{2m}-q_{r}k_{z}-\tilde{\delta}\right)\varphi_{\downarrow}+\frac{\Omega}{2}\frac{\varepsilon_{p}+\frac{i\Omega}{2} \mathcal{N}\varphi_\uparrow^\ast\varphi_\downarrow}{\kappa+i\delta_{c}}\varphi_{\uparrow}\,.\label{EOMphi2}
 \ea
 
-For a given atomic quasi-momentum ${\bf k}$, we define eigenstate and eigenenergy as the solution of the time-independent version of Eqs.~(\ref{EOMphi1}) and (\ref{EOMphi2}),  by replacing $i(\partial/\partial t)$ with $\epsilon({\bf k})$. After some lengthy nonetheless straightforward algebra, we find that $\epsilon({\bf k})$ obeys a quartic equation: 
+For a given atomic quasi-momentum ${\bf k}$, we define eigenstate and eigenenergy as the solution of the time-independent version of Eqs.~(\ref{EOMphi1}) and (\ref{EOMphi2}),  by replacing $i(\partial/\partial t)$ with $\epsilon({\bf k})$. After some lengthy nonetheless straightforward algebra, we find that $\epsilon({\bf k})$ obeys a quartic equation (we consider $\mathcal{N}=1$ hereafter): 
 \begin{equation}
 4\epsilon^4+B\epsilon^3+C\epsilon^2+D\epsilon+E=0 \,,
 \label{generalquarticEq}
@@ -171,6 +171,40 @@ Here the coefficients $w$, $u$ and $v$ are defined in the Supplementary Material
 
 
 \section{Master Equation Approach: Full Quantum Mechanical Treatment } \label{master}
+
+Semi-classical mean field approach gives an intuitive picture of understanding the atom-light interaction, as we have shown above. However, it ignores quantum fluctions of both operator $c$ and $\psi_\sigma({\bf r})$. A more stringent approach is given by solving quantum master equation, which is especially useful to study few cavity photon scenario. The quantum master equations, in a nutshell, are differential equations for the entire density matrix, including contributions from off-diagonal elements which represents quantum coherence as a characteristic quantum mechanical signiture. 
+
+Instead of treating the leakage of cavity photon phenomenologically in Eq.~(\ref{effH}), we model the dissipation process by Liouvillean terms $\mathcal{L}$ appearing in the Lindblad master equation for the atom-field density operator, i.e., 
+\be 
+\dot{\rho} = \frac{1}{i\hbar}[H_{\text{eff}},\rho]+\mathcal{L}\rho \,. \label{masterEq}
+\ee
+where $H_{\text{eff}}$ is the same as $\mathcal{H}_{\text{eff}}$ in Eq.~(\ref{effH}) by dropping the last term of $-i\kappa c^{\dagger}c$. Cavity loss of photon is taken as the standard form of Lindblad superoperator \cite{L1, L2},
+\be 
+\mathcal{L}\rho = \kappa (2c\rho c^\dagger-c^\dagger c\rho-\rho c^\dagger c)\,.\label{Lindblad}
+\ee
+Again, due to space homogeneity, we decouple momentum eigenstates by taking the plane-wave ansatz for the atomic modes $\varphi_\sigma({\bf r})=e^{i{\bf k}\cdot{\bf r}}\varphi_\sigma$. Thereon, we are granted to work with the Hilbert subspace of a given momentum value ${\bf k}$, where we write the commutator explicitly as,
+\ba
+[H_{\text{eff}}({\bf k}),\rho] & = & \left(\frac{{\bf k}^{2}}{2m}+\frac{q_{r}k_{z}}{m}+\tilde{\delta}\right)\left(\varphi_{\uparrow}^{\dagger}\psi_{\uparrow}\rho-\rho\varphi_{\uparrow}^{\dagger}\psi_{\uparrow}\right)+\left(\frac{{\bf k}^{2}}{2m}-\frac{q_{r}k_{z}}{m}-\tilde{\delta}\right)\left(\psi_{\downarrow}^{\dagger}\varphi_{\downarrow}\rho-\rho\varphi_{\downarrow}^{\dagger}\varphi_{\downarrow}\right)\nonumber\\
+ & + & \mathcal{N}\frac{\Omega}{2}\left(\varphi_{\uparrow}^{\dagger}\varphi_{\downarrow}c\rho+c^{\dagger}\varphi_{\downarrow}^{\dagger}\varphi_{\uparrow}\rho-\rho\varphi_{\uparrow}^{\dagger}\varphi_{\downarrow}c-\rho c^{\dagger}\varphi_{\downarrow}^{\dagger}\varphi_{\uparrow}\right)\nonumber\\
+&+&i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right)\,.
+\ea
+To this end, we choose our basis states as $|n;\sigma\rangle$, $n=0,1,2,...N$ where $N$ is the truncation number of photon inside the cavity and $\sigma=\uparrow,\downarrow$. Our goal is to calculate the entire matrix elements of density operator under this basis states, where we denote $\langle m;\sigma|\rho|n;\sigma'\rangle\equiv\rho_{mn}^{\sigma\sigma'}$. For arbitrary state, after some lengthy algebra, we found,
+\ba 
+\frac{d}{dt}\rho_{mn}^{\sigma\sigma'} 
+& = & -i\left(\frac{{\bf k}^{2}}{2m}+\frac{q_{r}k_{z}}{m}+\tilde{\delta}\right)\left(\delta_{\sigma\uparrow}-\delta_{\sigma'\uparrow}\right)\rho_{mn}^{\sigma\sigma'}
+-  i\left(\frac{{\bf k}^{2}}{2m}-\frac{q_{r}k_{z}}{m}-\tilde{\delta}\right)\left(\delta_{\sigma\downarrow}-\delta_{\sigma'\downarrow}\right)\rho_{mn}^{\sigma\sigma'}\nonumber\\
+& + & \frac{\Omega\mathcal{N}}{2i}(\delta_{\sigma\uparrow}\sqrt{m+1}\rho_{m+1n}^{\bar{\sigma}\sigma'}
++\delta_{\sigma\downarrow}\sqrt{m}\rho_{m-1n}^{\bar{\sigma}\sigma'}
+-\delta_{\sigma'\uparrow}\sqrt{n+1}\rho_{mn+1}^{\sigma\bar{\sigma'}}
+-\delta_{\sigma'\downarrow}\sqrt{n}\rho_{mn-1}^{\sigma\bar{\sigma'}})\nonumber\\
+& + & \varepsilon_{p}\left(\sqrt{m}\rho_{m-1n}^{\sigma\sigma'}-\sqrt{m+1}\rho_{m+1n}^{\sigma\sigma'}+\sqrt{n}\rho_{mn-1}^{\sigma\sigma'}-\sqrt{n+1}\rho_{mn+1}^{\sigma\sigma'}\right)\nonumber\\
+& + & i\delta_{c}\left(m-n\right)\rho_{mn}^{\sigma\sigma'}
++ \kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{m+1n+1}^{\sigma\sigma'}-(m+n)\rho_{mn}^{\sigma\sigma'}\right)\,\label{EOMrho}
+\ea
+where $\bar{\sigma}$ represents the flip-spin value, i.e. $\bar{\uparrow}=\downarrow$ and $\bar{\downarrow}=\uparrow$. Since we have finite truncation number $N$, we shall ignore terms involving $|N+1;\sigma\rangle$ or $|-1;\sigma\rangle$ generated by photon creation or annilation operators.
+
+Steady state solution of density operator can be obtained by taking the RHS of Eq.~\ref{EOMrho} to zero. 
+
 
 \section{Results and Discussions} \label{relation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -275,6 +309,10 @@ Sinova, J., Cilcer, D., Niu, Q., Sinitsyn, N., Jungwirth, T., and MacDonald, A.,
 Kato, Y. K., Myers, R. C., Gossard, A. C. and Awschalom, D. D.,  {\em Science} {\bf 2004}, {\em 306} 1910–1913.
 \bibitem{cavitySOC}
 Lin Dong, Lu Zhou, Biao Wu, B. Ramachandhran, and Han Pu, {\em Phys. Rev. A} {\bf 2014} {\em 89}, 011602(R).
+\bibitem{L1}
+Kossakowski, A. { Rep. Math. Phys.} {\bf 1972}, {\em 3} (4): 247.
+\bibitem{L2}
+Lindblad, G. {\em Commun. Math. Phys.} {\bf 1976}, {\em 48} (2): 119.
 % Reference 2
 % \bibitem{ref-book}
 % Lastname, F.F.; Author, T. The title of the cited contribution. In {\em The Book Title}; Editor, F., Meditor, A., Eds.; Publishing House: City, Country, 2007; pp. 32-58.
