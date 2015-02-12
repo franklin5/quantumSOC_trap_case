@@ -139,4 +139,3 @@ negativity(npara) = abs(sum(dEigrhoTA(dEigrhoTA<0)));
 % composition.
 %negativity2(npara) = ...
 %    sum(sum(abs(RMatrix_temp-diag(diag(RMatrix_temp)))))/2;
-npara=npara+1;
