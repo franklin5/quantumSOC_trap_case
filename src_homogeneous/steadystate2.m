@@ -127,4 +127,16 @@ steadystateH(npara)=real(trace(RMatrix_temp*HeffMatrix));
 steadystateN(npara)=real(trace(RMatrix_temp*photonNumberMatrix));
 steadystateFluct(npara)=real(trace(RMatrix_temp*photonSquareMatrix))-steadystateN(npara)^2;
 % steadystateFluct(npara)=steadystateFluct(npara)/steadystateN(npara);% check Poissonian distribution
+uu = reshape(rho(1:(N+1)^2),N+1,N+1).';
+ud = reshape(rho(1+(N+1)^2:2*(N+1)^2),N+1,N+1).';
+du = reshape(rho(1+2*(N+1)^2:3*(N+1)^2),N+1,N+1).';
+dd = reshape(rho(1+3*(N+1)^2:4*(N+1)^2),N+1,N+1).';
+rhoTA = [uu.', ud.'; du.',dd.'];
+dEigrhoTA = real(eig(rhoTA));
+negativity(npara) = abs(sum(dEigrhoTA(dEigrhoTA<0)));
+% The following definition is only valid for pair basis state, that
+% requires state A is paired with only one state B in the bipartite
+% composition.
+%negativity2(npara) = ...
+%    sum(sum(abs(RMatrix_temp-diag(diag(RMatrix_temp)))))/2;
 npara=npara+1;

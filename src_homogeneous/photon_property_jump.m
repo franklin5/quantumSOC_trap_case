@@ -32,13 +32,15 @@ ylabel('<n>')
 axis ([-8 8 1.5 2.5])
 hold on
 plot(akz,steadystateFluct./steadystateN,'--m','linewidth',2)
-figure
-[hAx,hLine1,hLine2] = ...
-    plotyy(akz,steadystateFluct./steadystateN,[aqz', aqz', akz'],[photon(1,:)',photon(2,:)',steadystateN']...
-    );
-xlabel('k_z/q_r')
-ylabel(hAx(1),'fluctuation') % left y-axis
-ylabel(hAx(2),'photon number') % right y-axis
+plot(akz,negativity2,'b--','linewidth',2)
+hold off
+% figure
+% [hAx,hLine1,hLine2] = ...
+%     plotyy(akz,steadystateFluct./steadystateN,[aqz', aqz', akz'],[photon(1,:)',photon(2,:)',steadystateN']...
+%     );
+% xlabel('k_z/q_r')
+% ylabel(hAx(1),'fluctuation') % left y-axis
+% ylabel(hAx(2),'photon number') % right y-axis
 
 % ylabel('<(\Deltan)^2>')
 % ylabel('<(\Deltan)^2>/ <n>')
