@@ -53,6 +53,7 @@ for nex=1:length(Eq)
 %         ax=fsolve(eqa,mean(ada(abs(imeqa(ada))<1e-1)),options);            
 %         ax=fsolve(eqa,mean(ada(abs(imeqa(ada))<1e-4)),options);
         ax=fsolve(eqa,ada(abs(imeqa(ada))==min(abs(imeqa(ada)))),options);
+        if qz==0 ax = mean(ax); end
         bx=sqrt(1-ax^2);
         thx=angle((ex-h1+Omega/2*1i*Omega2/2*bx^2/(1-1i*deltac))*...
                     ax/bx/(Omega/2*eta/(1-1i*deltac)));

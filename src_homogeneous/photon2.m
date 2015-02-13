@@ -14,7 +14,10 @@ qz = kz;
     theta=@(ex) angle((ex-h1+Omega/2*1i*Omega2/2*phi_dn_sqr(ex)/(1-1i*deltac)).*...
         sqrt(abs(phi_up_sqr(ex)))./sqrt(abs(phi_dn_sqr(ex)))...
         /(Omega/2*eta/(1-1i*deltac)));
+    
+    % display('---------------eigenvalue method----------------') 
     Eqplot = computeEqQuartic(qz);
+    [p,th]=pth2(Eqplot,qz);
     for nn=1:4
         if Eqplot(nn)~=100
             ex=Eqplot(nn);
@@ -23,18 +26,20 @@ qz = kz;
                 sin(theta(ex))+(Omega2/2)^2*phi_dn_sqr(ex).*phi_up_sqr(ex));
         end
     end
+    % display('------------------fixed point------------------')
+        [px,thx,flag,gradflag]=pthx(qz);
 
-%     [p,th]=pth2(Eq,qz);
-%     %     display('------------------fixed point------------------')
-%         [px,thx,flag,gradflag]=pthx(qz);
-% 
-%         hold on
-%         for nn=1:length(flag)
-%             orn=find(abs(exp(1i*th)-exp(1i*thx(nn)))<0.04);
-%             if flag(nn)==1
-%                 scatter(qz/kr,Eq(orn(1)),50,'k.') % stable point
-%             else
-%                 scatter(qz/kr,Eq(orn(1)),50,gradflag(nn),'v','filled') % unstable point
-%             end
-%         end
-    
+        hold on
+        for nn=1:length(flag)
+            orn=find(abs(exp(1i*th)-exp(1i*thx(nn)))<1e-3);
+            if flag(nn)==1
+                scatter(qz,photon(orn(1),npara),50,'kO','filled') % stable point
+            else
+                scatter(qz,photon(orn(1),npara),50,gradflag(nn),'O','filled') % unstable point
+            end
+        end
+        drawnow
+    colorbar
+    caxis([0 0.5])
+    colormap jet
+    set(gca,'fontsize',20)
