@@ -31,15 +31,15 @@ qz = kz;
 
         hold on
         for nn=1:length(flag)
-            orn=find(abs(exp(1i*th)-exp(1i*thx(nn)))<1e-3);
+            orn=find(abs(exp(1i*th)-exp(1i*thx(nn)))<0.05);
             if flag(nn)==1
-                scatter(qz,photon(orn(1),npara),50,'kO','filled') % stable point
+                scatter(qz,abs(photon(orn(1),npara)),50,'kO','filled') % stable point
             else
-                scatter(qz,photon(orn(1),npara),50,gradflag(nn)/Omega,'O','filled') % unstable point
+                scatter(qz,abs(photon(orn(1),npara)),50,gradflag(nn)/Omega,'O','filled') % unstable point
             end
         end
         drawnow
-    colorbar
+    %colorbar
     caxis([0 0.8])
     colormap jet
     set(gca,'fontsize',20)

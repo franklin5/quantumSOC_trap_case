@@ -16,13 +16,15 @@ qr=0.22; % photon recoil momentum
 kr = qr;
 delta=0; % two-photon detuning
 N=10; % photon number truncation
-akz=-30:0.11:30;
+akz=-30:0.013:30;
+%akz=-10:1.1:10;
+%akz=-5:0.009:5;
 photon=100*ones(4,length(akz));
- for kz=akz
-steadystate2;
-photon2;
-npara=npara+1
- end
+for kz=akz
+    steadystate2;
+    photon2;
+    npara=npara+1
+end
 %   set(gca,'fontsize',16)
 %  if Omega < 4*epsilonp
 %      plot(akz,steadystateN,'r--', ...
@@ -45,9 +47,9 @@ hold off
 %axis([min(akz) max(akz) 0.3 0.7])
 axis([min(akz) max(akz) 0 1])
 xlabel('k_z/q_r')
-legend('|<c>|^2','Tr[\rho n]')
+%legend('|<c>|^2','Tr[\rho n]')
 save(['Omega_',num2str(Omega),'.mat'])
-figure
+figure(2)
 [hAx,hLine1,hLine2] = ...
     plotyy(akz,steadystateFluct./steadystateN,...
     akz,negativity);
