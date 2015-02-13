@@ -16,7 +16,7 @@ qr=0.22; % photon recoil momentum
 kr = qr;
 delta=0; % two-photon detuning
 N=10; % photon number truncation
-akz=-30:0.1:30;
+akz=-30:0.11:30;
 photon=100*ones(4,length(akz));
  for kz=akz
 steadystate2;
