@@ -1,11 +1,11 @@
 %% figure wrap ups
 clear
 clc
-clf
+close all
 global qr kr eta deltac delta Omega Omega2 epsilonp 
 npara=1;
 kappa=1; % chosen as energy unit
-Omega=5.6; % Raman coupling strength
+Omega=6; % Raman coupling strength
 Omega2=Omega;           % Omega2 is the cavity feedback. They are the same  
 % for Omega=.1:0.1:6
 %figure
@@ -16,7 +16,7 @@ qr=0.22; % photon recoil momentum
 kr = qr;
 delta=0; % two-photon detuning
 N=10; % photon number truncation
-akz=-12:0.1:12;
+akz=-30:0.1:30;
 photon=100*ones(4,length(akz));
  for kz=akz
 steadystate2;
@@ -42,3 +42,15 @@ npara=npara+1
 hold on 
  plot(akz,steadystateN,'r--','linewidth',2)
 hold off
+%axis([min(akz) max(akz) 0.3 0.7])
+axis([min(akz) max(akz) 0 1])
+xlabel('k_z/q_r')
+legend('|<c>|^2','Tr[\rho n]')
+save(['Omega_',num2str(Omega),'.mat'])
+figure
+[hAx,hLine1,hLine2] = ...
+    plotyy(akz,steadystateFluct./steadystateN,...
+    akz,negativity);
+xlabel('k_z/q_r')
+ylabel(hAx(1),'fluctuation') % left y-axis
+ylabel(hAx(2),'negativity') % right y-axis

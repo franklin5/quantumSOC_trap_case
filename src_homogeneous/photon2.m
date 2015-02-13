@@ -35,11 +35,11 @@ qz = kz;
             if flag(nn)==1
                 scatter(qz,photon(orn(1),npara),50,'kO','filled') % stable point
             else
-                scatter(qz,photon(orn(1),npara),50,gradflag(nn),'O','filled') % unstable point
+                scatter(qz,photon(orn(1),npara),50,gradflag(nn)/Omega,'O','filled') % unstable point
             end
         end
         drawnow
     colorbar
-    caxis([0 0.5])
+    caxis([0 0.8])
     colormap jet
     set(gca,'fontsize',20)
