@@ -1,31 +1,32 @@
 %% figure wrap ups
 clear
 clc
-close all
 global qr kr eta deltac delta Omega Omega2 epsilonp 
 npara=1;
 kappa=1; % chosen as energy unit
-Omega=0.1; % Raman coupling strength
+Omega=3; % Raman coupling strength
+aOmega = [ 3 5.6 6];
+for Omega = aOmega
 Omega2=Omega;           % Omega2 is the cavity feedback. They are the same  
-% for Omega=.1:0.1:6
 %figure
 deltac=1;
-epsilonp=1.0;
+epsilonp=1;
 eta=epsilonp/kappa;
-qr=0.22; % photon recoil momentum
+qr=0; % photon recoil momentum
 kr = qr;
 delta=0; % two-photon detuning
 N=10; % photon number truncation
-%akz=-30:0.013:30;
-akz=-10:1.1:10;
+akz=-30:1.1:30;
+kz = 0.0;
+%akz=-10:1.1:10;
 %akz=-5:0.009:5;
 photon=100*ones(4,length(akz));
-for kz=akz
+%for kz=akz
     steadystate2;
-    photon2;
+    %photon2;
     npara=npara+1
 end
-%   set(gca,'fontsize',16)
+set(gca,'fontsize',16)
 %  if Omega < 4*epsilonp
 %      plot(akz,steadystateN,'r--', ...
 %          akz, photon(1,:),'b',...
@@ -42,17 +43,19 @@ end
 %      hold off
 %  end
 hold on 
- plot(akz,steadystateN,'r--','linewidth',2)
+ plot(aOmega,steadystateN,'r--',...
+     aOmega,steadystateFluct./steadystateN,'b',...
+     aOmega,negativity,'k','linewidth',2)
 hold off
 %axis([min(akz) max(akz) 0.3 0.7])
-axis([min(akz) max(akz) 0 1])
-xlabel('k_z/q_r')
-%legend('|<c>|^2','Tr[\rho n]')
-%save(['Omega_',num2str(Omega),'.mat'])
-figure(2)
-[hAx,hLine1,hLine2] = ...
-    plotyy(akz,steadystateFluct./steadystateN,...
-    akz,negativity);
-xlabel('k_z/q_r')
-ylabel(hAx(1),'fluctuation') % left y-axis
-ylabel(hAx(2),'negativity') % right y-axis
+%axis([min(aOmega) max(aOmega) 0 1])
+xlabel('\Omega/\kappa')
+legend('Tr[\rho n]','fluctuation','negativity')
+% save(['JC_Omega_',num2str(Omega),'.mat'])
+% figure(2)
+% [hAx,hLine1,hLine2] = ...
+%     plotyy(aOmega,steadystateFluct./steadystateN,...
+%     aOmega,negativity);
+% xlabel('k_z/q_r')
+% ylabel(hAx(1),'fluctuation') % left y-axis
+% ylabel(hAx(2),'negativity') % right y-axis
