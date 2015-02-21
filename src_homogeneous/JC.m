@@ -1,4 +1,4 @@
-%% figure wrap ups
+%% JC limit
 clear
 clc
 global qr kr eta deltac delta Omega Omega2 epsilonp 
