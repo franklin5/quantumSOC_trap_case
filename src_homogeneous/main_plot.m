@@ -5,7 +5,7 @@ close all
 global qr kr eta deltac delta Omega Omega2 epsilonp 
 npara=1;
 kappa=1; % chosen as energy unit
-Omega=0.1; % Raman coupling strength
+Omega=3; % Raman coupling strength
 Omega2=Omega;           % Omega2 is the cavity feedback. They are the same  
 % for Omega=.1:0.1:6
 %figure
@@ -16,8 +16,8 @@ qr=0.22; % photon recoil momentum
 kr = qr;
 delta=0; % two-photon detuning
 N=10; % photon number truncation
-%akz=-30:0.013:30;
-akz=-10:1.1:10;
+akz=-30:0.013:30;
+%akz=-10:1.1:10;
 %akz=-5:0.009:5;
 photon=100*ones(4,length(akz));
 for kz=akz
