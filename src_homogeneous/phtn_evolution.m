@@ -24,7 +24,7 @@ rho_initial=zeros(4*(N+1)^2,1);
 rho_initial(1,1)=1; % property of the density operator, trace is one. --> spin up pure state
 for nkz=1:length(akz)
     kz = akz(nkz);
-    [time_t,rho] = ode45(@rho_t,[0 50],rho_initial); % time evolving state from a pure spin up, and plot the time evolution of photon number
+    [time_t,rho] = ode45(@rho_t,[0 25],rho_initial); % time evolving state from a pure spin up, and plot the time evolution of photon number
     for nt = 1:length(time_t)
         %% reshapes density operator from column to matrix form.
         rho_tmp = rho(nt,:);
