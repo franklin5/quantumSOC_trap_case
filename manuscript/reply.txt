@@ -1,0 +1,45 @@
+Dear Editors, 
+
+Thank you for forwarding us the referee reports on our manuscript submitted to Atoms as an article and entitled "Photon-Induced Spin-Orbit Coupling in Ultracold Atoms inside Optical Cavity" (Manuscript ID. atoms-83432). After carefully considering the comments from both referees, we have revised the manuscript and are now resubmitting our work to Atoms for the consideration of publication. 
+
+We are looking forward to hearing from you.
+Bests,
+Lin Dong, Chuanzhou Zhu, Han Pu
+
+---------------------------------------
+Here are the detailed responses to both referees and followed by a summary of changes.
+--------------------------------------
+Response to referees:
+to Referee A:
+We first thank the referee for thoroughly going through our manuscript and remarking our results “genuinely interesting” and “science is solid” in the first paragraph of the report. 
+
+We acknowledge that the current work considers the same laser setup and ring cavity system that we proposed in the previous work. However, the mean field formalism is largely extended and we more thoroughly discussed the back-action effect on effective Raman coupling and dispersion curve. Without Section 2’s preparations, we cannot better elucidate quantum treatment in Section 3 and 4.
+
+Referee comment: The authors replace the photon and atomic field operators by their averages.  Both of these are only valid in the limit of very large numbers. While I can believe that the cavity contains many photons, there is only one single particle. Why would this (BEC approximation) be even remotely valid? 
+
+Answer: For the case when there is only one particle, we replace the field operator by the c-number and it is not an approximation. It’s only a change of representation from second quantization to first quantization. If we were to consider a collection of non-interacting atoms, then we need to make the BEC approximation.  
+
+Referee comment:  In Eq. (2) \kappa is inserted by hand?
+
+Answer: Yes. In the mean field treatment, we treat the cavity decay phenomenologically and add the non-hermitian term to the effective hamiltonian (1). That results in the \kappa term in Eq. (2).
+
+Referee comment: I don't understand why the negativity, which is to measure the entanglement between the atom and photon, is a useful or interesting quantity to calculate.  What is it telling me about the system that I didn't otherwise know? And last on this topic, why does the entanglement weaken in the limit of large k?
+
+Answer: Negativity measures the degree of entanglement for a mixed state system, unlike Von Neumann entropy which characterizes entanglement for a pure state system. Atomic dispersion curve, photon number and photon number fluctuation characterizes the subsystem’s property individually, while negativity is the quantity to represent the degree of correlation between the two. On this topic, as we have mentioned in the paragraph above Section 5, the effective two-photon Raman detuning is linear in momentum k, which comes from the difference of kinetic energies for different spin state. At large k, the Raman transition becomes far off-resonant and thus atom-photon coupling weakens, leading to less correlated/entangled atom-photon system.
+
+
+---------------------------------------
+to Referee B:
+We thank the referee for remarking our work as “a significant advance and offers incremental improvement to existing work in the references” and we appreciate the referee’s effort in letting us aware of the literatures where similar back-action effect in atomic medium has been reported. 
+
+We have improved the manuscript by including the comparison of our work and previous literatures. 
+
+---------------------------------------
+Summary of changes:
+(1) We added “In an optical ring cavity, through coherent controlling the dark and bright states, the vacuum Rabi splitting and optical bistability of cavity multi-wave-mixing process has been studied [9]. In addition, bright-state polaritons of four-wave mixing and six-wave mixing signals can be parametrically amplified [10].” in the first paragraph.
+
+(2) We added Reference 9 and 10 in addressing the comparison between the current work and existing literatures.
+
+(3) We have further clarified mean field approximation which only refers to photon field in Section 2, rather than atomic degree of freedom, if we only consider one particle in the system.
+
+
