@@ -1,5 +1,5 @@
-#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass paper
@@ -15,28 +15,54 @@
 \def\d{\downarrow}
 \end_preamble
 \use_default_options true
+\maintain_unincluded_children false
 \language english
+\language_package default
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref false
 \papersize a4paper
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\cite_engine natbib_numerical
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \leftmargin 0.5in
 \topmargin 0.5in
 \rightmargin 0.5in
@@ -45,15 +71,16 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -81,13 +108,16 @@ today
 
 \begin_layout Standard
 We can write the 1D atom-cavity Hamiltonian in a hamonic trap as, 
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \mathcal{H}_{\text{eff}} & = & \int dz\left(\begin{array}{cc}
 \psi_{\uparrow}^{\dagger}(z) & \psi_{\downarrow}^{\dagger}(z)\end{array}\right)\left[\frac{\hbar^{2}k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{\hbar^{2}}{m}q_{r}k_{z}\sigma_{z}+\delta\sigma_{z}\right]\left(\begin{array}{c}
 \psi_{\uparrow}(z)\\
-\psi_{\downarrow}(z)\end{array}\right)\nonumber \\
+\psi_{\downarrow}(z)
+\end{array}\right)\nonumber \\
  & + & \int dz\frac{\Omega}{2}\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c+\int dz\frac{\Omega}{2}c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\nonumber \\
- & + & i\varepsilon_{p}(c^{\dagger}-c)-\hbar\delta_{c}c^{\dagger}c.\end{eqnarray}
+ & + & i\varepsilon_{p}(c^{\dagger}-c)-\hbar\delta_{c}c^{\dagger}c.
+\end{eqnarray}
 
 \end_inset
 
@@ -96,23 +126,29 @@ Dissipation process is modeled by Liouvillean term
 \end_inset
 
  appearing in the master equation, 
-\begin_inset Formula \begin{equation}
-\dot{\rho}=\frac{1}{i\hbar}[\mathcal{H}_{\text{eff}},\rho]+\mathcal{L}\rho\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\dot{\rho}=\frac{1}{i\hbar}[\mathcal{H}_{\text{eff}},\rho]+\mathcal{L}\rho\label{eq:rho_master}
+\end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula \begin{equation}
-\mathcal{L}\rho=\kappa(2c\rho c^{\dagger}-c^{\dagger}c\rho-\rho c^{\dagger}c).\end{equation}
+\begin_inset Formula 
+\begin{equation}
+\mathcal{L}\rho=\kappa(2c\rho c^{\dagger}-c^{\dagger}c\rho-\rho c^{\dagger}c).
+\end{equation}
 
 \end_inset
 
 Then, we write the commutator explicitly as, 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 [\mathcal{H}_{\text{eff}},\rho] & = & \int dz\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{q_{r}k_{z}}{m}+\delta\right)\psi_{\uparrow}(z)\rho-\int dz\rho\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{q_{r}k_{z}}{m}+\delta\right)\psi_{\uparrow}(z)\\
  & + & \int dz\psi_{\downarrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}-\frac{q_{r}k_{z}}{m}-\delta\right)\psi_{\downarrow}(z)\rho-\int dz\rho\psi_{\downarrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}-\frac{q_{r}k_{z}}{m}-\delta\right)\psi_{\downarrow}(z)\\
  & + & \frac{\Omega}{2}\int dz\left(\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\rho-\rho\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\right)\\
- & + & i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right).\end{eqnarray*}
+ & + & i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right).
+\end{eqnarray*}
 
 \end_inset
 
@@ -185,7 +221,7 @@ To this end, we choose our basis states as
 \begin_inset Formula $n=0,1,2,...N$
 \end_inset
 
- where 
+ and 
 \begin_inset Formula $N$
 \end_inset
 
@@ -193,7 +229,7 @@ To this end, we choose our basis states as
 \begin_inset Formula $q=1,2,...Q$
 \end_inset
 
- where 
+ and 
 \begin_inset Formula $Q$
 \end_inset
 
@@ -209,13 +245,15 @@ To this end, we choose our basis states as
 
 .
  Rules for creation and annilation operators are 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 c|n;q,\sigma'\rangle & = & \sqrt{n}|n-1;q,\sigma'\rangle,\quad c^{\dagger}|n;q,\sigma'\rangle=\sqrt{n+1}|n+1;q,\sigma'\rangle\\
-\langle m;q,\sigma|c & = & \sqrt{m+1}\langle m+1;q,\sigma|,\langle m;q,\sigma|c^{\dagger}=\sqrt{m}\langle m-1;q,\sigma|.\end{eqnarray*}
+\langle m;q,\sigma|c & = & \sqrt{m+1}\langle m+1;q,\sigma|,\langle m;q,\sigma|c^{\dagger}=\sqrt{m}\langle m-1;q,\sigma|.
+\end{eqnarray*}
 
 \end_inset
 
-Field operator 
+We write field operator 
 \begin_inset Formula $\psi_{\sigma}(z)=\sum_{q=1}^{Q}\varphi_{q}(z)a_{q\sigma}$
 \end_inset
 
@@ -243,12 +281,14 @@ Field operator
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \frac{d}{dt}\rho_{mn}^{p\sigma q\sigma'} & = & \frac{h_{1}}{i}\left(\delta_{\sigma\uparrow}-\delta_{\sigma'\uparrow}\right)\rho_{mn}^{\sigma\sigma'}+\frac{h_{2}}{i}\left(\delta_{\sigma\downarrow}-\delta_{\sigma'\downarrow}\right)\rho_{mn}^{\sigma\sigma'}\\
  & + & \frac{\Omega}{2i}\left(\delta_{\sigma\uparrow}\sqrt{m+1}\rho_{m+1n}^{\bar{\sigma}\sigma'}+\delta_{\sigma\downarrow}\sqrt{m}\rho_{m-1n}^{\bar{\sigma}\sigma'}-\delta_{\sigma'\uparrow}\sqrt{n+1}\rho_{mn+1}^{\sigma\bar{\sigma'}}-\delta_{\sigma'\downarrow}\sqrt{n}\rho_{mn-1}^{\sigma\bar{\sigma'}}\right)\\
  & + & \varepsilon_{p}\left(\sqrt{m}\rho_{m-1n}^{\sigma\sigma'}-\sqrt{m+1}\rho_{m+1n}^{\sigma\sigma'}+\sqrt{n}\rho_{mn-1}^{\sigma\sigma'}-\sqrt{n+1}\rho_{mn+1}^{\sigma\sigma'}\right)\\
  & - & \frac{\delta_{c}}{i}\left(m-n\right)\rho_{mn}^{\sigma\sigma'}\\
- & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{m+1n+1}^{\sigma\sigma'}-(m+n)\rho_{mn}^{\sigma\sigma'}\right)\end{eqnarray}
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{m+1n+1}^{\sigma\sigma'}-(m+n)\rho_{mn}^{\sigma\sigma'}\right)
+\end{eqnarray}
 
 \end_inset
 
@@ -281,10 +321,12 @@ where
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
  & \langle m;\sigma|\frac{1}{i\hbar}\left[i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right)\right]+\kappa(2c\rho c^{\dagger}-c^{\dagger}c\rho-\rho c^{\dagger}c)|n;\sigma'\rangle & =\\
  & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\sigma|\rho|n;\sigma'\rangle-\sqrt{m+1}\langle m+1;\sigma|\rho|n;\sigma'\rangle-\sqrt{n+1}\langle m;\sigma|\rho|n+1;\sigma'\rangle+\sqrt{n}\langle m;\sigma|\rho|n-1;\sigma'\rangle\right)\\
- & -\frac{1}{i\hbar}\delta_{c}\left(m-n\right)\langle m;\sigma|\rho|n;\sigma'\rangle+\kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\sigma|\rho|n+1;\sigma'\rangle-(m+n)\langle m;\sigma|\rho|n;\sigma'\rangle\right)\end{eqnarray*}
+ & -\frac{1}{i\hbar}\delta_{c}\left(m-n\right)\langle m;\sigma|\rho|n;\sigma'\rangle+\kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\sigma|\rho|n+1;\sigma'\rangle-(m+n)\langle m;\sigma|\rho|n;\sigma'\rangle\right)
+\end{eqnarray*}
 
 \end_inset
 
@@ -298,7 +340,8 @@ status open
 
 \begin_layout Plain Layout
 Explicitly, and without loss of generality, the matrix elements are,
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula 
+\begin{eqnarray}
 \frac{d}{dt}\langle m;\uparrow|\rho|n;\uparrow\rangle & = & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\uparrow|\rho|n+1;\downarrow\rangle\right)\nonumber \\
  & + & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\uparrow|\rho|n;\uparrow\rangle-\sqrt{m+1}\langle m+1;\uparrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\uparrow|\rho|n+1;\uparrow\rangle+\sqrt{n}\langle m;\uparrow|\rho|n-1;\uparrow\rangle\right)\nonumber \\
  & - & \frac{1}{i\hbar}\delta_{c}\left(m-n\right)\langle m;\uparrow|\rho|n;\uparrow\rangle\nonumber \\
@@ -316,7 +359,8 @@ Explicitly, and without loss of generality, the matrix elements are,
  & + & \frac{1}{i\hbar}\frac{\Omega}{2}\left(\sqrt{m}\langle m-1;\uparrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\downarrow|\rho|n+1;\downarrow\rangle\right)\nonumber \\
  & + & \frac{1}{i\hbar}i\varepsilon_{p}\left(\sqrt{m}\langle m-1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{m+1}\langle m+1;\downarrow|\rho|n;\uparrow\rangle-\sqrt{n+1}\langle m;\downarrow|\rho|n+1;\uparrow\rangle+\sqrt{n}\langle m;\downarrow|\rho|n-1;\uparrow\rangle\right)\nonumber \\
  & - & \frac{1}{i\hbar}\delta_{c}(m-n)\langle m;\downarrow|\rho|n;\uparrow\rangle\nonumber \\
- & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\downarrow|\rho|n+1;\uparrow\rangle-(m+n)\langle m;\downarrow|\rho|n;\uparrow\rangle\right)\end{eqnarray}
+ & + & \kappa\left(2\sqrt{m+1}\sqrt{n+1}\langle m+1;\downarrow|\rho|n+1;\uparrow\rangle-(m+n)\langle m;\downarrow|\rho|n;\uparrow\rangle\right)
+\end{eqnarray}
 
 \end_inset
 
@@ -327,8 +371,10 @@ status open
 \begin_layout Plain Layout
 In the code, I have defined the arrangement of state vector array order
  as
-\begin_inset Formula \[
-|0;\uparrow\rangle,|1;\uparrow\rangle,...,|N;\uparrow\rangle,|0;\downarrow\rangle,|1;\downarrow\rangle,...,|N;\downarrow\rangle\]
+\begin_inset Formula 
+\[
+|0;\uparrow\rangle,|1;\uparrow\rangle,...,|N;\uparrow\rangle,|0;\downarrow\rangle,|1;\downarrow\rangle,...,|N;\downarrow\rangle
+\]
 
 \end_inset
 
@@ -343,10 +389,13 @@ In the code, I have defined the arrangement of state vector array order
 \end_inset
 
 Notationally, 
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 [\rho_{mn}^{\sigma\sigma'}]_{(2N+2)\times(2N+2)}=\left(\begin{array}{cc}
 [\rho_{mn}^{\uparrow\uparrow}]_{(N+1)\times(N+1)} & [\rho_{mn}^{\uparrow\downarrow}]_{(N+1)\times(N+1)}\\
-{}[\rho_{mn}^{\downarrow\uparrow}]_{(N+1)\times(N+1)} & [\rho_{mn}^{\downarrow\downarrow}]_{(N+1)\times(N+1)}\end{array}\right)\end{equation}
+{}[\rho_{mn}^{\downarrow\uparrow}]_{(N+1)\times(N+1)} & [\rho_{mn}^{\downarrow\downarrow}]_{(N+1)\times(N+1)}
+\end{array}\right)
+\end{equation}
 
 \end_inset
 
@@ -378,20 +427,25 @@ th element is accessed as
  generated by photon creation or annilation operators, as they either hit
  the ceiling or floor of our truncated Hilbert space.
  We then further write EOM of density matrix as
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 \frac{d}{dt}\left(\begin{array}{c}
 [\rho_{mn}^{\uparrow\uparrow}]_{(N+1)^{2}\times1}\\
 {}[\rho_{mn}^{\uparrow\downarrow}]_{(N+1)^{2}\times1}\\
 {}[\rho_{mn}^{\downarrow\uparrow}]_{(N+1)^{2}\times1}\\
-{}[\rho_{mn}^{\downarrow\downarrow}]_{(N+1)^{2}\times1}\end{array}\right)_{(2N+2)^{2}\times1}=\left(\begin{array}{cccc}
+{}[\rho_{mn}^{\downarrow\downarrow}]_{(N+1)^{2}\times1}
+\end{array}\right)_{(2N+2)^{2}\times1}=\left(\begin{array}{cccc}
 [M_{mn}^{\uparrow\uparrow}] & [S_{mn}^{1}] & [S_{mn}^{2}] & 0\\
 {}[S_{mn}^{3}] & [M_{mn}^{\uparrow\downarrow}] & 0 & [S_{mn}^{4}]\\
 {}[S_{mn}^{5}] & 0 & [M_{mn}^{\downarrow\uparrow}] & [S_{mn}^{6}]\\
-0 & [S_{mn}^{7}] & [S_{mn}^{8}] & [M_{mn}^{\downarrow\downarrow}]\end{array}\right)_{(2N+2)^{2}\times(2N+2)^{2}}\left(\begin{array}{c}
+0 & [S_{mn}^{7}] & [S_{mn}^{8}] & [M_{mn}^{\downarrow\downarrow}]
+\end{array}\right)_{(2N+2)^{2}\times(2N+2)^{2}}\left(\begin{array}{c}
 [\rho_{mn}^{\uparrow\uparrow}]\\
 {}[\rho_{mn}^{\uparrow\downarrow}]\\
 {}[\rho_{mn}^{\downarrow\uparrow}]\\
-{}[\rho_{mn}^{\downarrow\downarrow}]\end{array}\right)_{(2N+2)^{2}\times1}\label{eq:EOM_rho_matrix}\end{equation}
+{}[\rho_{mn}^{\downarrow\downarrow}]
+\end{array}\right)_{(2N+2)^{2}\times1}\label{eq:EOM_rho_matrix}
+\end{equation}
 
 \end_inset
 
@@ -413,11 +467,13 @@ th element is accessed as
 \bar no
 \noun off
 \color none
-\begin_inset Formula \begin{eqnarray*}
-FirstTerm= & \langle m;p,\sigma|\int dz\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2}+\frac{1}{2}z^{2}+q_{r}k_{z}+\delta\right)\psi_{\uparrow}(z)\rho|n;q,\sigma'\rangle\\
+\begin_inset Formula 
+\begin{eqnarray*}
+\text{FirstTerm}\equiv & \langle m;p,\sigma|\int dz\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2}+\frac{1}{2}z^{2}+q_{r}k_{z}+\delta\right)\psi_{\uparrow}(z)\rho|n;q,\sigma'\rangle\\
 = & \langle m;p,\sigma|\int dz\sum_{p'}\varphi_{p'}^{\ast}(z)a_{p'\uparrow}^{\dagger}\left(H_{\text{osc}}+\delta-iq_{r}\frac{\partial}{\partial z}\right)\sum_{q'}\varphi_{q'}(z)a_{q'\uparrow}\rho|n;q\sigma'\rangle\\
 = & \sum_{p'q'}\left[\int dz\varphi_{p'}^{\ast}(z)\left(H_{\text{osc}}+\delta-iq_{r}\frac{\partial}{\partial z}\right)\varphi_{q'}(z)\right]\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle\\
-= & \sum_{p'q'}\left[(q'+\frac{1}{2}+\delta)\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)-iq_{r}\int dz\varphi_{p'}^{\ast}(z)\frac{\partial}{\partial z}\varphi_{q'}(z)\right]\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle\end{eqnarray*}
+= & \sum_{p'q'}\left[(q'+\frac{1}{2}+\delta)\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)-iq_{r}\int dz\varphi_{p'}^{\ast}(z)\frac{\partial}{\partial z}\varphi_{q'}(z)\right]\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle
+\end{eqnarray*}
 
 \end_inset
 
@@ -431,8 +487,10 @@ Easy to have
 
 .
  From 
-\begin_inset Formula \[
-\varphi_{q}(z)=\mathcal{A}_{q}H_{q}(z)e^{-\frac{z^{2}}{2}},\quad\mathcal{A}_{q}=\frac{1}{\sqrt{2^{q}q!}}\frac{1}{\pi^{1/4}}.\]
+\begin_inset Formula 
+\[
+\varphi_{q}(z)=\mathcal{A}_{q}H_{q}(z)e^{-\frac{z^{2}}{2}},\quad\mathcal{A}_{q}=\frac{1}{\sqrt{2^{q}q!}}\frac{1}{\pi^{1/4}}.
+\]
 
 \end_inset
 
@@ -441,13 +499,15 @@ where
 \end_inset
 
  is the Hermite polynomials, we have 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 -i\frac{\partial}{\partial z}\varphi_{q}(z) & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(H_{q}'(z)-zH_{q}(z)\right)\\
  & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(2qH_{q-1}(z)-zH_{q}(z)\right)\\
  & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(2qH_{q-1}(z)-\frac{1}{2}(H_{q+1}(z)+2qH_{q-1}(z))\right)\\
  & = & -i\mathcal{A}_{q}e^{-\frac{z^{2}}{2}}\left(qH_{q-1}(z)-\frac{1}{2}H_{q+1}(z)\right)\\
  & = & -i\left(q\frac{\mathcal{A}_{q}}{\mathcal{A}_{q-1}}\varphi_{q-1}(z)-\frac{1}{2}\frac{\mathcal{A}_{q}}{\mathcal{A}_{q+1}}\varphi_{q+1}(z)\right)\\
- & = & -i\left(\sqrt{\frac{q}{2}}\varphi_{q-1}(z)-\sqrt{\frac{q+1}{2}}\varphi_{q+1}(z)\right)\end{eqnarray*}
+ & = & -i\left(\sqrt{\frac{q}{2}}\varphi_{q-1}(z)-\sqrt{\frac{q+1}{2}}\varphi_{q+1}(z)\right)
+\end{eqnarray*}
 
 \end_inset
 
@@ -469,14 +529,16 @@ where we have used recurrence relation for Hermite polynomials, including
 \begin_inset Formula $k_{z}=\frac{1}{\sqrt{2}i}(a-a^{\dagger})$
 \end_inset
 
- and operates it on the wavefunction 
+ and operate it on the wavefunction 
 \begin_inset Formula $\varphi_{p}(z)$
 \end_inset
 
 , namely in one line we can prove,
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 k_{z}\varphi_{q'}(z) & = & \frac{1}{\sqrt{2}i}(a-a^{\dagger})\varphi_{q'}(z)\\
- & = & -i\frac{1}{\sqrt{2}}\left(\sqrt{q'}\varphi_{q'-1}(z)-\sqrt{q'+1}\varphi_{q'+1}(z)\right)\end{eqnarray*}
+ & = & -i\frac{1}{\sqrt{2}}\left(\sqrt{q'}\varphi_{q'-1}(z)-\sqrt{q'+1}\varphi_{q'+1}(z)\right)
+\end{eqnarray*}
 
 \end_inset
 
@@ -486,10 +548,12 @@ Then, we should have
 
 .
  Also, note that 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
 \langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle & = & \delta_{p',p}\delta_{\sigma,\uparrow}\langle m;\text{vac}|a_{q'\uparrow}\rho|n;q\sigma'\rangle\\
  & = & \delta_{p',p}\delta_{\sigma,\uparrow}\langle m;q'\uparrow|\rho|n;q\sigma'\rangle\\
- & = & \delta_{p',p}\delta_{\sigma,\uparrow}\rho_{mn}^{q'\sigma q\sigma'}\end{eqnarray*}
+ & = & \delta_{p',p}\delta_{\sigma,\uparrow}\rho_{mn}^{q'\sigma q\sigma'}
+\end{eqnarray*}
 
 \end_inset
 
@@ -531,14 +595,108 @@ To avoid confusion, we have to point out one subtle difference between
 \end_inset
 
  term as a prefactor! Wrapping it up, the first term is massaged into 
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula 
+\begin{eqnarray*}
  & \delta_{\sigma,\uparrow}\sum_{p'q'}\left[\left(q'+\frac{1}{2}+\delta\right)\delta_{p'q'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q'}\delta_{p',q'-1}-\sqrt{q'+1}\delta_{p',q'+1}\right)\right]\delta_{p',p}\rho_{mn}^{q'\sigma q\sigma'}\\
-= & \left(p+\frac{1}{2}+\delta\right)\rho_{mn}^{p\uparrow q\sigma'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{p+1\uparrow q\sigma'}-\sqrt{p}\rho_{mn}^{p-1\uparrow q\sigma'}\right)\end{eqnarray*}
+= & \left(p+\frac{1}{2}+\delta\right)\rho_{mn}^{p\uparrow q\sigma'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\uparrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\uparrow q\sigma'}\right)
+\end{eqnarray*}
 
 \end_inset
 
 and the rest of terms could be followed similarly.
  
+\begin_inset Formula 
+\[
+-\langle m;p,\sigma|\int dz\rho\psi_{\uparrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}+\frac{q_{r}k_{z}}{m}+\delta\right)\psi_{\uparrow}(z)|n;q,\sigma'\rangle=-\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{p\sigma q\uparrow}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\uparrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\uparrow}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\langle m;p,\sigma|\int dz\psi_{\downarrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}-\frac{q_{r}k_{z}}{m}-\delta\right)\psi_{\downarrow}(z)\rho|n;q,\sigma'\rangle=\left(p+\frac{1}{2}-\delta\right)\rho_{mn}^{p\downarrow q\sigma'}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\downarrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\downarrow q\sigma'}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\langle m;p,\sigma|\int dz\rho\psi_{\downarrow}^{\dagger}(z)\left(\frac{k_{z}^{2}}{2m}+\frac{1}{2}m\omega^{2}z^{2}-\frac{q_{r}k_{z}}{m}-\delta\right)\psi_{\downarrow}(z)|n;q,\sigma'\rangle=-\left(q+\frac{1}{2}-\delta\right)\rho_{mn}^{p\sigma q\downarrow}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\downarrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\downarrow}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\langle m;p,\sigma|\frac{\Omega}{2}\int dz\left(\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\rho-\rho\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\right)|n;q,\sigma'\rangle=\sum_{p'q'}\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)\times\\
+\left[\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\downarrow}c\rho|n;q\sigma'\rangle+\langle m;p,\sigma|c^{\dagger}a_{p'\downarrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle-\langle m;p,\sigma|\rho a_{p'\uparrow}^{\dagger}a_{q'\downarrow}c|n;q\sigma'\rangle-\langle m;p,\sigma|\rho c^{\dagger}a_{p'\downarrow}^{\dagger}a_{q'\uparrow}|n;q\sigma'\rangle\right] & =\\
+\sum_{p'q'}\delta_{p'q'}\left[\sqrt{m+1}\delta_{pp'}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{q'\downarrow q\sigma'}+\sqrt{m}\delta_{pp'}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{q'\uparrow q\sigma'}-\sqrt{n}\delta_{qq'}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma p'\uparrow}-\sqrt{n+1}\delta_{qq'}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma p'\downarrow}\right] & =\\
+\sqrt{m+1}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{p\downarrow q\sigma'}+\sqrt{m}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{p\uparrow q\sigma'}-\sqrt{n}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma q\uparrow}-\sqrt{n+1}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma q\downarrow}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\langle m;p,\sigma|i\varepsilon_{p}\left(c^{\dagger}\rho-c\rho-\rho c^{\dagger}+\rho c\right)-\delta_{c}\left(c^{\dagger}c\rho-\rho c^{\dagger}c\right)|n;q,\sigma'\rangle & =\\
+i\varepsilon_{p}\left(\sqrt{m}\rho_{(m-1)n}^{p\sigma q\sigma'}-\sqrt{m+1}\rho_{(m+1)n}^{p\sigma q\sigma'}-\sqrt{n+1}\rho_{m(n+1)}^{p\sigma q\sigma'}+\sqrt{n}\rho_{m(n-1)}^{p\sigma q\sigma'}\right)-\delta_{c}\left(m-n\right)\rho_{mn}^{p\sigma q\sigma'}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\kappa\langle m;p,\sigma|(2c\rho c^{\dagger}-c^{\dagger}c\rho-\rho c^{\dagger}c)|n;q,\sigma'\rangle=\kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{(m+1)(n+1)}^{p\sigma q\sigma'}-(m+n)\rho_{mn}^{p\sigma q\sigma'}\right)
+\]
+
+\end_inset
+
+With above preparations, we write master equation Eq.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_master"
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ as, 
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{d}{dt}\rho_{mn}^{p\sigma q\sigma'} & = & \frac{1}{i}\left[\left(p+\frac{1}{2}+\delta\right)\rho_{mn}^{p\uparrow q\sigma'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\uparrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\uparrow q\sigma'}\right)\right]\nonumber \\
+ & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{p\sigma q\uparrow}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\uparrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\uparrow}\right)\right]\nonumber \\
+ & + & \frac{1}{i}\left[\left(p+\frac{1}{2}-\delta\right)\rho_{mn}^{p\downarrow q\sigma'}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\downarrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\downarrow q\sigma'}\right)\right]\nonumber \\
+ & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}-\delta\right)\rho_{mn}^{p\sigma q\downarrow}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\downarrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\downarrow}\right)\right]\nonumber \\
+ & + & \frac{1}{i}\left[\sqrt{m+1}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{p\downarrow q\sigma'}+\sqrt{m}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{p\uparrow q\sigma'}-\sqrt{n}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma q\uparrow}-\sqrt{n+1}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma q\downarrow}\right]\nonumber \\
+ & + & \varepsilon_{p}\left(\sqrt{m}\rho_{(m-1)n}^{p\sigma q\sigma'}-\sqrt{m+1}\rho_{(m+1)n}^{p\sigma q\sigma'}-\sqrt{n+1}\rho_{m(n+1)}^{p\sigma q\sigma'}+\sqrt{n}\rho_{m(n-1)}^{p\sigma q\sigma'}\right)\nonumber \\
+ & + & i\delta_{c}\left(m-n\right)\rho_{mn}^{p\sigma q\sigma'}+\frac{\kappa}{i}\left(2\sqrt{m+1}\sqrt{n+1}\rho_{(m+1)(n+1)}^{p\sigma q\sigma'}-(m+n)\rho_{mn}^{p\sigma q\sigma'}\right)
+\end{eqnarray}
+
+\end_inset
+
+
 \end_layout
 
 \end_body
