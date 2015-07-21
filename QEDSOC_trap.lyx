@@ -631,9 +631,9 @@ and the rest of terms could be followed similarly.
 
 \begin_inset Formula 
 \begin{eqnarray*}
-\langle m;p,\sigma|\frac{\Omega}{2}\int dz\left(\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\rho-\rho\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\right)|n;q,\sigma'\rangle=\sum_{p'q'}\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)\times\\
+\langle m;p,\sigma|\frac{\Omega}{2}\int dz\left(\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c\rho+c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\rho-\rho\psi_{\uparrow}^{\dagger}(z)\psi_{\downarrow}(z)c-\rho c^{\dagger}\psi_{\downarrow}^{\dagger}(z)\psi_{\uparrow}(z)\right)|n;q,\sigma'\rangle=\frac{\Omega}{2}\sum_{p'q'}\int dz\varphi_{p'}^{\ast}(z)\varphi_{q'}(z)\times\\
 \left[\langle m;p,\sigma|a_{p'\uparrow}^{\dagger}a_{q'\downarrow}c\rho|n;q\sigma'\rangle+\langle m;p,\sigma|c^{\dagger}a_{p'\downarrow}^{\dagger}a_{q'\uparrow}\rho|n;q\sigma'\rangle-\langle m;p,\sigma|\rho a_{p'\uparrow}^{\dagger}a_{q'\downarrow}c|n;q\sigma'\rangle-\langle m;p,\sigma|\rho c^{\dagger}a_{p'\downarrow}^{\dagger}a_{q'\uparrow}|n;q\sigma'\rangle\right] & =\\
-\sum_{p'q'}\delta_{p'q'}\left[\sqrt{m+1}\delta_{pp'}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{q'\downarrow q\sigma'}+\sqrt{m}\delta_{pp'}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{q'\uparrow q\sigma'}-\sqrt{n}\delta_{qq'}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma p'\uparrow}-\sqrt{n+1}\delta_{qq'}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma p'\downarrow}\right] & =\\
+\frac{\Omega}{2}\sum_{p'q'}\delta_{p'q'}\left[\sqrt{m+1}\delta_{pp'}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{q'\downarrow q\sigma'}+\sqrt{m}\delta_{pp'}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{q'\uparrow q\sigma'}-\sqrt{n}\delta_{qq'}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma p'\uparrow}-\sqrt{n+1}\delta_{qq'}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma p'\downarrow}\right] & = & \frac{\Omega}{2}\times\\
 \sqrt{m+1}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{p\downarrow q\sigma'}+\sqrt{m}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{p\uparrow q\sigma'}-\sqrt{n}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma q\uparrow}-\sqrt{n+1}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma q\downarrow}
 \end{eqnarray*}
 
@@ -689,10 +689,65 @@ reference "eq:rho_master"
  & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{p\sigma q\uparrow}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\uparrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\uparrow}\right)\right]\nonumber \\
  & + & \frac{1}{i}\left[\left(p+\frac{1}{2}-\delta\right)\rho_{mn}^{p\downarrow q\sigma'}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\downarrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\downarrow q\sigma'}\right)\right]\nonumber \\
  & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}-\delta\right)\rho_{mn}^{p\sigma q\downarrow}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\downarrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\downarrow}\right)\right]\nonumber \\
- & + & \frac{1}{i}\left[\sqrt{m+1}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{p\downarrow q\sigma'}+\sqrt{m}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{p\uparrow q\sigma'}-\sqrt{n}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma q\uparrow}-\sqrt{n+1}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma q\downarrow}\right]\nonumber \\
+ & + & \frac{\Omega}{2}\frac{1}{i}\left[\sqrt{m+1}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{p\downarrow q\sigma'}+\sqrt{m}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{p\uparrow q\sigma'}-\sqrt{n}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma q\uparrow}-\sqrt{n+1}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma q\downarrow}\right]\nonumber \\
  & + & \varepsilon_{p}\left(\sqrt{m}\rho_{(m-1)n}^{p\sigma q\sigma'}-\sqrt{m+1}\rho_{(m+1)n}^{p\sigma q\sigma'}-\sqrt{n+1}\rho_{m(n+1)}^{p\sigma q\sigma'}+\sqrt{n}\rho_{m(n-1)}^{p\sigma q\sigma'}\right)\nonumber \\
- & + & i\delta_{c}\left(m-n\right)\rho_{mn}^{p\sigma q\sigma'}+\frac{\kappa}{i}\left(2\sqrt{m+1}\sqrt{n+1}\rho_{(m+1)(n+1)}^{p\sigma q\sigma'}-(m+n)\rho_{mn}^{p\sigma q\sigma'}\right)
+ & + & i\delta_{c}\left(m-n\right)\rho_{mn}^{p\sigma q\sigma'}+\kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{(m+1)(n+1)}^{p\sigma q\sigma'}-(m+n)\rho_{mn}^{p\sigma q\sigma'}\right)
 \end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following the previous work, we define 
+\begin_inset Formula 
+\begin{equation}
+[\rho_{mn}^{p\sigma q\sigma'}]_{(2N+2)Q\times(2N+2)Q}=\left(\begin{array}{cc}
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)Q\times(N+1)Q} & [\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)Q\times(N+1)Q}\\{}
+[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)Q\times(N+1)Q} & [\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)Q\times(N+1)Q}
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+We columnize the matrix array by array.
+ For instance, in the column of 
+\begin_inset Formula $[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)^{2}Q^{2}\times1}$
+\end_inset
+
+, the 
+\begin_inset Formula $k$
+\end_inset
+
+th element is accessed as 
+\begin_inset Formula $k=m(N+1)Q^{2}+nQ^{2}+(p-1)Q+q$
+\end_inset
+
+.
+ We then further write EOM of density matrix as
+\begin_inset Formula 
+\[
+[\rho]=\left(\begin{array}{c}
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)Q\times(N+1)Q}\\
+{}[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)Q\times(N+1)Q}\\
+{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)Q\times(N+1)Q}\\
+{}[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)Q\times(N+1)Q}
+\end{array}\right)_{(2N+2)^{2}Q^{2}\times1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}[\rho]=\left(\begin{array}{cccc}
+[M_{mn}^{p\uparrow q\uparrow}] & [S_{mn}^{1pq}] & [S_{mn}^{2pq}] & 0\\
+{}[S_{mn}^{3pq}] & [M_{mn}^{p\uparrow q\downarrow}] & 0 & [S_{mn}^{4pq}]\\
+{}[S_{mn}^{5pq}] & 0 & [M_{mn}^{p\downarrow q\uparrow}] & [S_{mn}^{6pq}]\\
+0 & [S_{mn}^{7pq}] & [S_{mn}^{8pq}] & [M_{mn}^{p\downarrow q\downarrow}]
+\end{array}\right)_{(2N+2)^{2}Q^{2}\times(2N+2)^{2}Q^{2}}[\rho]\label{eq:EOM_rho_matrix-1}
+\end{equation}
 
 \end_inset
 
