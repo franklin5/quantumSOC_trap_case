@@ -3,33 +3,15 @@
 clear
 clc
 global G
-npara = 1;
-N = 1;
-Q = 2;
-qr = 0;
+for N = 9:2:15
+for Q = 10:2:14
+qr = 0.22;
 Omega = 3;
-alist = 0.1:0.5:5;
-%for npara = 1:length(alist)     
-delta = 0;
-varepsilon = 0;
-delta_c = 0;
-%kappa = alist(npara);
-kappa = 0;
+delta = 1;
+varepsilon = 1;
+delta_c = 0.5;
+kappa = 1;
 G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon);
-
-%% We test that the steady state evolution indeed matches the time
-%% evolution results at infinite time
-rho0 = zeros(4*(N+1)^2*Q^2,1);
-rho0(1,1)=1; % initial condition of the state
-maxT = 10;
-[TimeRho, RhoT] = ode45(@timeEvoRHO, [0 maxT], rho0);
-figure(1)
-for i = 1:length(RhoT(1,:))
-    plot(TimeRho,abs(RhoT(:,i)))
-    hold on
-end
-hold off
-
 G(1,:)=0; % redundant equation
 for im = 1:N+1
     m = im-1;
@@ -45,16 +27,6 @@ RHS=zeros(4*(N+1)^2*Q^2,1);
 RHS(1,1)=1; % property of the density operator, trace is one.
 %% steady state solution, requiring time derivative is zero.
 rho=G\RHS;
-figure(1)
-hold on
-for i = 1:length(rho)
-    scatter(maxT, abs(rho(i)),'o')
-end
-hold off
-xlabel('time')
-ylabel('|\rho| components')
-set(gca,'fontsize',16)
-drawnow
 %% reshapes density operator from column to matrix form.
 RMatrix_temp(:,:)=[reshape(rho(1:(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q).',reshape(rho(1+(N+1)^2*Q^2:2*(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q).';...
     reshape(rho(1+2*(N+1)^2*Q^2:3*(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q).',reshape(rho(1+3*(N+1)^2*Q^2:4*(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q).']; 
@@ -72,17 +44,18 @@ for im = 1:N+1
     end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%
-steadystateN(npara)=real(trace(RMatrix_temp*photonNumberMatrix));
-steadystateFluct(npara)=real(trace(RMatrix_temp*photonSquareMatrix))-steadystateN(npara)^2;
-steadystateFluct(npara)=steadystateFluct(npara)/steadystateN(npara);% check Poissonian distribution
+steadystateN(N,Q-1)=real(trace(RMatrix_temp*photonNumberMatrix));
+steadystateFluct(N,Q-1)=real(trace(RMatrix_temp*photonSquareMatrix))-steadystateN(N,Q-1)^2;
+steadystateFluct(N,Q-1)=steadystateFluct(N,Q-1)/steadystateN(N,Q-1);% check Poissonian distribution
 PartialTransposeRho(:,:)=[reshape(rho(1:(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q),reshape(rho(1+(N+1)^2*Q^2:2*(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q);...
     reshape(rho(1+2*(N+1)^2*Q^2:3*(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q),reshape(rho(1+3*(N+1)^2*Q^2:4*(N+1)^2*Q^2),(N+1)*Q,(N+1)*Q)];
 PTRhoEig=real(eig(PartialTransposeRho));
-negativity(npara)=sum(abs(PTRhoEig)-PTRhoEig)/2;
-%end
-figure(2)
-plot(alist, steadystateN, 'r', alist, steadystateFluct,'b', alist, negativity, 'm')
-xlabel('\kappa')
-legend('<n>', 'fluctuation', 'negativity')
-set(gca,'fontsize',16)
-title(['cutoff number N_{photon} = ',num2str(N),',  Q_{osc} = ', num2str(Q)])
+negativity(N,Q-1)=sum(abs(PTRhoEig)-PTRhoEig)/2;
+clear RMatrix_temp PartialTransposeRho
+end
+end
+save benchmark_test_N_Q_2.mat
+
+mesh(1:8,2:9, steadystateN)
+mesh(1:8,2:9, steadystateFluct)
+mesh(1:8,2:9, negativity)
