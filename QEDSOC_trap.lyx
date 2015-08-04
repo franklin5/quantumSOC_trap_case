@@ -798,15 +798,20 @@ To benchmark the results, we first consider the case without pumping and
 Due to conservation of excitation number, the Hilbert space is further reduced
  to the smaller subspace.
  For instance, if we have 
-\begin_inset Formula $|0,q,\uparrow\rangle$
+\begin_inset Formula $|N-1,q,\uparrow\rangle$
 \end_inset
 
  as initial state, then we would only have population in another state 
-\begin_inset Formula $|1,q,\downarrow\rangle$
+\begin_inset Formula $|N,q,\downarrow\rangle$
 \end_inset
 
  and these two states lead to four elements of density matrix and in solving
- the master equation, we are dealing with 4 by 4 ODE time evolution,
+ the master equation, we are dealing with 4 by 4 ODE time evolution for
+ 
+\begin_inset Formula $N=1$
+\end_inset
+
+,
 \begin_inset Formula 
 \begin{equation}
 \frac{d}{dt}\left(\begin{array}{c}
@@ -824,6 +829,33 @@ Due to conservation of excitation number, the Hilbert space is further reduced
 \rho_{01}^{q\uparrow q\downarrow}\\
 \rho_{10}^{q\downarrow q\uparrow}\\
 \rho_{11}^{q\downarrow q\downarrow}
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+and for arbitrary 
+\begin_inset Formula $N\ge1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left(\begin{array}{c}
+\rho_{N-1,N-1}^{q\uparrow q\uparrow}\\
+\rho_{N-1,N}^{q\uparrow q\downarrow}\\
+\rho_{N,N-1}^{q\downarrow q\uparrow}\\
+\rho_{N,N}^{q\downarrow q\downarrow}
+\end{array}\right)=\left(\begin{array}{cccc}
+0 & -\frac{\Omega}{2i}\sqrt{N} & \frac{\Omega}{2i}\sqrt{N} & 0\\
+-\frac{\Omega}{2i}\sqrt{N} & 2\delta & 0 & \frac{\Omega}{2i}\sqrt{N}\\
+\frac{\Omega}{2i}\sqrt{N} & 0 & -2\delta & -\frac{\Omega}{2i}\sqrt{N}\\
+0 & \frac{\Omega}{2i}\sqrt{N} & -\frac{\Omega}{2i}\sqrt{N} & 0
+\end{array}\right)\left(\begin{array}{c}
+\rho_{N-1,N-1}^{q\uparrow q\uparrow}\\
+\rho_{N-1,N}^{q\uparrow q\downarrow}\\
+\rho_{N,N-1}^{q\downarrow q\uparrow}\\
+\rho_{N,N}^{q\downarrow q\downarrow}
 \end{array}\right)
 \end{equation}
 
