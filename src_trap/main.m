@@ -5,12 +5,12 @@ clc
 global G
 npara = 1;
 N = 1;
-Q = 2;
-qr = 0;
-Omega = 3;
+Q = 20;
+qr = 0.5;
+Omega = 0;
 alist = 0.1:0.5:5;
 %for npara = 1:length(alist)     
-delta = 0;
+delta = 4;
 varepsilon = 0;
 delta_c = 0;
 %kappa = alist(npara);
@@ -21,7 +21,7 @@ G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon);
 %% evolution results at infinite time
 rho0 = zeros(4*(N+1)^2*Q^2,1);
 rho0(1,1)=1; % initial condition of the state
-maxT = 10;
+maxT = 5;
 [TimeRho, RhoT] = ode45(@timeEvoRHO, [0 maxT], rho0);
 figure(1)
 for i = 1:length(RhoT(1,:))
@@ -29,7 +29,13 @@ for i = 1:length(RhoT(1,:))
     hold on
 end
 hold off
-
+figure(2)
+sump = 0;
+for p = 1:Q
+    sump = sump +  abs(RhoT(:,(p-1)*Q+p));
+end
+plot(TimeRho, sump)
+%{
 G(1,:)=0; % redundant equation
 for im = 1:N+1
     m = im-1;
@@ -86,3 +92,4 @@ xlabel('\kappa')
 legend('<n>', 'fluctuation', 'negativity')
 set(gca,'fontsize',16)
 title(['cutoff number N_{photon} = ',num2str(N),',  Q_{osc} = ', num2str(Q)])
+%}

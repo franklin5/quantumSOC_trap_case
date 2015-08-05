@@ -764,7 +764,11 @@ th element is accessed as
 \begin_layout Standard
 To benchmark the results, we first consider the case without pumping and
  decay, with zero photon inside the cavity and atom being the excited state.
- If we further set 
+ 
+\end_layout
+
+\begin_layout Itemize
+If we further set 
 \begin_inset Formula $q_{r}=0$
 \end_inset
 
@@ -785,8 +789,9 @@ To benchmark the results, we first consider the case without pumping and
 \begin_inset Formula $q$
 \end_inset
 
- is only a constant number.We use simplified notation of density operator
- and write the master equation as, 
+ is only a constant number.
+ We use simplified notation of density operator and write the master equation
+ as, 
 \begin_inset Formula 
 \begin{eqnarray*}
 \frac{d}{dt}\rho_{mn}^{q\sigma q\sigma'} & = & \frac{1}{i}\left[\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{q\uparrow q\sigma'}-\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{q\sigma q\uparrow}+\left(q+\frac{1}{2}-\delta\right)\rho_{mn}^{q\downarrow q\sigma'}-\left(q+\frac{1}{2}-\delta\right)\rho_{mn}^{q\sigma q\downarrow}\right]\\
@@ -821,8 +826,8 @@ Due to conservation of excitation number, the Hilbert space is further reduced
 \rho_{11}^{q\downarrow q\downarrow}
 \end{array}\right)=\left(\begin{array}{cccc}
 0 & -\frac{\Omega}{2i} & \frac{\Omega}{2i} & 0\\
--\frac{\Omega}{2i} & 2\delta & 0 & \frac{\Omega}{2i}\\
-\frac{\Omega}{2i} & 0 & -2\delta & -\frac{\Omega}{2i}\\
+-\frac{\Omega}{2i} & \frac{2\delta}{i} & 0 & \frac{\Omega}{2i}\\
+\frac{\Omega}{2i} & 0 & -\frac{2\delta}{i} & -\frac{\Omega}{2i}\\
 0 & \frac{\Omega}{2i} & -\frac{\Omega}{2i} & 0
 \end{array}\right)\left(\begin{array}{c}
 \rho_{00}^{q\uparrow q\uparrow}\\
@@ -848,8 +853,8 @@ and for arbitrary
 \rho_{N,N}^{q\downarrow q\downarrow}
 \end{array}\right)=\left(\begin{array}{cccc}
 0 & -\frac{\Omega}{2i}\sqrt{N} & \frac{\Omega}{2i}\sqrt{N} & 0\\
--\frac{\Omega}{2i}\sqrt{N} & 2\delta & 0 & \frac{\Omega}{2i}\sqrt{N}\\
-\frac{\Omega}{2i}\sqrt{N} & 0 & -2\delta & -\frac{\Omega}{2i}\sqrt{N}\\
+-\frac{\Omega}{2i}\sqrt{N} & \frac{2\delta}{i} & 0 & \frac{\Omega}{2i}\sqrt{N}\\
+\frac{\Omega}{2i}\sqrt{N} & 0 & -\frac{2\delta}{i} & -\frac{\Omega}{2i}\sqrt{N}\\
 0 & \frac{\Omega}{2i}\sqrt{N} & -\frac{\Omega}{2i}\sqrt{N} & 0
 \end{array}\right)\left(\begin{array}{c}
 \rho_{N-1,N-1}^{q\uparrow q\uparrow}\\
@@ -862,6 +867,43 @@ and for arbitrary
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Also, we can consider case when 
+\begin_inset Formula $q_{r}\neq0$
+\end_inset
+
+ but 
+\begin_inset Formula $\Omega=0$
+\end_inset
+
+.
+ In this case, excitation number is still a good quantum number but different
+ oscillator 
+\begin_inset Formula $q$
+\end_inset
+
+ is coupled.
+ The master equation is written as,
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{d}{dt}\rho_{mn}^{p\sigma q\sigma'} & = & \frac{1}{i}\left[\left(p+\frac{1}{2}+\delta\right)\rho_{mn}^{p\uparrow q\sigma'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\uparrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\uparrow q\sigma'}\right)\right]\\
+ & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{p\sigma q\uparrow}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\uparrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\uparrow}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+where we only need to consider Hilbert space spanned by 
+\begin_inset Formula $|0,q,\uparrow\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $q=1,2,...,Q$
+\end_inset
+
+ (if we choose initial state as zero photon and up spin and lowest oscillator
+ state)
 \end_layout
 
 \end_body

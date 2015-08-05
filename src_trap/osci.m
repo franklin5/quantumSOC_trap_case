@@ -3,7 +3,7 @@
 clear
 clc
 global G Omega N delta
-N = 1;
+N = 3;
 Q = 1;
 qr = 0;
 Omega = 2;     
@@ -17,10 +17,12 @@ rho0 = zeros(4*(N+1)^2*Q^2,1);
 rho0(1,1)=1; % initial condition of the state
 maxT = 20;
 [TimeRho1, RhoT] = ode45(@timeEvoRHO, [0 maxT], rho0);
+N=1;
 reduced_rho0 = zeros(4,1);
 reduced_rho0(1,1)=1; % initial condition of the state
 [TimeRho2, reduced_RhoT] = ode45(@reduced_rho_bench, [0 maxT], reduced_rho0);
 t = TimeRho2;
+delta = delta*2;
 Delta = sqrt(Omega^2*N+delta^2)/2;
 Cupt = cos(Delta*t)+delta/2/1i/Delta*sin(Delta*t);
 Cdownt = Omega*sqrt(N)/2/1i/Delta*sin(Delta*t);
