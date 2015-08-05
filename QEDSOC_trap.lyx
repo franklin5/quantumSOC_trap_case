@@ -226,7 +226,7 @@ To this end, we choose our basis states as
 \end_inset
 
  is the truncation number of photon, 
-\begin_inset Formula $q=1,2,...Q$
+\begin_inset Formula $q=0,1,2,...Q$
 \end_inset
 
  and 
@@ -703,9 +703,9 @@ reference "eq:rho_master"
 Following the previous work, we define 
 \begin_inset Formula 
 \begin{equation}
-[\rho_{mn}^{p\sigma q\sigma'}]_{(2N+2)Q\times(2N+2)Q}=\left(\begin{array}{cc}
-[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)Q\times(N+1)Q} & [\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)Q\times(N+1)Q}\\
-{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)Q\times(N+1)Q} & [\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)Q\times(N+1)Q}
+[\rho_{mn}^{p\sigma q\sigma'}]_{(2N+2)(Q+1)\times(2N+2)(Q+1)}=\left(\begin{array}{cc}
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)} & [\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
+{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)} & [\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
 \end{array}\right)
 \end{equation}
 
@@ -721,7 +721,15 @@ We columnize the matrix array by array.
 \end_inset
 
 th element is accessed as 
-\begin_inset Formula $k=m(N+1)Q^{2}+nQ^{2}+(p-1)Q+q$
+\begin_inset Formula $k=m(N+1)(Q+1)^{2}+n(Q+1)^{2}+p(Q+1)+q+1$
+\end_inset
+
+ where 
+\begin_inset Formula $m,n=0,1,2,...N$
+\end_inset
+
+ and 
+\begin_inset Formula $p,q=0,1,2,...Q$
 \end_inset
 
 .
@@ -729,11 +737,11 @@ th element is accessed as
 \begin_inset Formula 
 \[
 [\rho]=\left(\begin{array}{c}
-[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)Q\times(N+1)Q}\\
-{}[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)Q\times(N+1)Q}\\
-{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)Q\times(N+1)Q}\\
-{}[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)Q\times(N+1)Q}
-\end{array}\right)_{(2N+2)^{2}Q^{2}\times1}
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
+\end{array}\right)_{(2N+2)^{2}(Q+1)^{2}\times1}
 \]
 
 \end_inset
@@ -746,7 +754,7 @@ th element is accessed as
 {}[S_{mn}^{3pq}] & [M_{mn}^{p\uparrow q\downarrow}] & 0 & [S_{mn}^{4pq}]\\
 {}[S_{mn}^{5pq}] & 0 & [M_{mn}^{p\downarrow q\uparrow}] & [S_{mn}^{6pq}]\\
 0 & [S_{mn}^{7pq}] & [S_{mn}^{8pq}] & [M_{mn}^{p\downarrow q\downarrow}]
-\end{array}\right)_{(2N+2)^{2}Q^{2}\times(2N+2)^{2}Q^{2}}[\rho]\label{eq:EOM_rho_matrix-1}
+\end{array}\right)_{(2N+2)^{2}(Q+1)^{2}\times(2N+2)^{2}(Q+1)^{2}}[\rho]\label{eq:EOM_rho_matrix-1}
 \end{equation}
 
 \end_inset
@@ -888,8 +896,8 @@ Also, we can consider case when
  The master equation is written as,
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{d}{dt}\rho_{mn}^{p\sigma q\sigma'} & = & \frac{1}{i}\left[\left(p+\frac{1}{2}+\delta\right)\rho_{mn}^{p\uparrow q\sigma'}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{mn}^{(p+1)\uparrow q\sigma'}-\sqrt{p}\rho_{mn}^{(p-1)\uparrow q\sigma'}\right)\right]\\
- & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}+\delta\right)\rho_{mn}^{p\sigma q\uparrow}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\uparrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\uparrow}\right)\right]
+\frac{d}{dt}\rho_{00}^{p\uparrow q\uparrow} & = & \frac{1}{i}\left[\left(p+\frac{1}{2}+\delta\right)\rho_{00}^{p\uparrow q\uparrow}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{p+1}\rho_{00}^{(p+1)\uparrow q\uparrow}-\sqrt{p}\rho_{00}^{(p-1)\uparrow q\uparrow}\right)\right]\\
+ & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}+\delta\right)\rho_{00}^{p\uparrow q\uparrow}+\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{00}^{p\uparrow(q-1)\uparrow}-\sqrt{q+1}\rho_{00}^{p\uparrow(q+1)\uparrow}\right)\right]
 \end{eqnarray*}
 
 \end_inset
@@ -899,7 +907,7 @@ where we only need to consider Hilbert space spanned by
 \end_inset
 
  and 
-\begin_inset Formula $q=1,2,...,Q$
+\begin_inset Formula $q=0,1,2,...,Q$
 \end_inset
 
  (if we choose initial state as zero photon and up spin and lowest oscillator
