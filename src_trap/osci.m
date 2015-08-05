@@ -1,9 +1,9 @@
 %% This program benchmarks the density matrix solver
-
+% This is to bench qr=0 and Omega neq 0 with Chuanzhou's code.
 clear
 clc
 global G Omega N delta
-N = 3;
+N = 1;
 Q = 1;
 qr = 0;
 Omega = 2;     
