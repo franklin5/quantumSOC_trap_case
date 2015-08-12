@@ -3,8 +3,8 @@
 clear
 clc
 global G
-for N = 9:2:15
-for Q = 10:2:14
+for N = 1:2:15
+for Q = 1:2:14
 qr = 0.22;
 Omega = 3;
 delta = 1;

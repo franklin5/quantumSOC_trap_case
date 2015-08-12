@@ -1,20 +1,20 @@
 %% This program benchmarks the density matrix solver
 
-clear
+clear 
 clc
 global G
 npara = 1;
 N = 1;
-Q = 20;
-qr = 0.5;
-Omega = 0;
+Q = 1;
+qr = 5;
+Omega = 1;
 alist = 0.1:0.5:5;
 %for npara = 1:length(alist)     
 delta = 4;
-varepsilon = 0;
-delta_c = 0;
+varepsilon = 1;
+delta_c = 1;
 %kappa = alist(npara);
-kappa = 0;
+kappa = 1;
 G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon);
 
 %% We test that the steady state evolution indeed matches the time
@@ -29,12 +29,12 @@ for i = 1:length(RhoT(1,:))
     hold on
 end
 hold off
-figure(2)
-sump = 0;
-for p = 0:Q
-    sump = sump +  abs(RhoT(:,(p+1-1)*(Q+1)+p+1));
-end
-plot(TimeRho, sump)
+% figure(2)
+% sump = 0;
+% for p = 0:Q
+%     sump = sump +  abs(RhoT(:,(p+1-1)*(Q+1)+p+1));
+% end
+% plot(TimeRho, sump)
 %{
 G(1,:)=0; % redundant equation
 for im = 1:N+1
