@@ -1,4 +1,4 @@
-function G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon)
+function G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon, omega)
 
 MUU=zeros((Q+1)^2*(N+1)^2,(Q+1)^2*(N+1)^2);MUD=MUU;MDU=MUU;MDD=MUU;S0=MUU;
 S1=MUU;S2=MUU;S3=MUU;S4=MUU;S5=MUU;S6=MUU;S7=MUU;S8=MUU;
@@ -9,10 +9,10 @@ for m = 0:N
             k = m*(N+1)*(Q+1)^2+n*(Q+1)^2+p*(Q+1)+q+1;            
             %% element index is the same for k and kt
             kt = k;
-            MUU(k,kt) = (p+0.5+delta)/1i-(q+0.5+delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
-            MUD(k,kt) = (p+0.5+delta)/1i-(q+0.5-delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
-            MDU(k,kt) = (p+0.5-delta)/1i-(q+0.5+delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
-            MDD(k,kt) = (p+0.5-delta)/1i-(q+0.5-delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
+            MUU(k,kt) = ((p+0.5)*omega+delta)/1i-((q+0.5)*omega+delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
+            MUD(k,kt) = ((p+0.5)*omega+delta)/1i-((q+0.5)*omega-delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
+            MDU(k,kt) = ((p+0.5)*omega-delta)/1i-((q+0.5)*omega+delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
+            MDD(k,kt) = ((p+0.5)*omega-delta)/1i-((q+0.5)*omega-delta)/1i+1i*delta_c*(m-n)-kappa*(m+n);
             
             %% oscillator index is off by +1 or -1
             mt = m; nt = n; pt = p+1; qt = q;

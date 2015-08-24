@@ -13,7 +13,7 @@ delta_c = 0;
 kappa = 0;
 G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon);
 
-rho0 = zeros(4*(N+1)^2*Q^2,1);
+rho0 = zeros(4*(N+1)^2*(Q+1)^2,1);
 rho0(1,1)=1; % initial condition of the state
 maxT = 20;
 [TimeRho1, RhoT] = ode45(@timeEvoRHO, [0 maxT], rho0);

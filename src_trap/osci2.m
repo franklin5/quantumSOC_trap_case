@@ -5,7 +5,7 @@ clc
 global Q qr delta G
 N = 1;
 Q = 10;
-qr = 1;
+qr = 2;
 Omega = 0;     
 delta = 1;
 varepsilon = 0;

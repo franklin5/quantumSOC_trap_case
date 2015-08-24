@@ -737,10 +737,10 @@ th element is accessed as
 \begin_inset Formula 
 \[
 [\rho]=\left(\begin{array}{c}
-[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
-[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
-[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
-[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
+{}[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
+{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
+{}[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
 \end{array}\right)_{(2N+2)^{2}(Q+1)^{2}\times1}
 \]
 
@@ -757,6 +757,38 @@ th element is accessed as
 \end{array}\right)_{(2N+2)^{2}(Q+1)^{2}\times(2N+2)^{2}(Q+1)^{2}}[\rho]\label{eq:EOM_rho_matrix-1}
 \end{equation}
 
+\end_inset
+
+We denote the RHS matrix of Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:EOM_rho_matrix-1"
+
+\end_inset
+
+ as 
+\begin_inset Formula $A$
+\end_inset
+
+ in the code, and we access the element 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ as 
+\begin_inset Formula $i=(N+1)^{2}(Q+1)^{2}r+m(N+1)(Q+1)^{2}+n(Q+1)^{2}+p(Q+1)+q+1$
+\end_inset
+
+ where 
+\begin_inset Formula $r,c=0,1,2,3$
+\end_inset
+
+, 
+\begin_inset Formula $m,n=0,1,2,...N$
+\end_inset
+
+ and 
+\begin_inset Formula $p,q=0,1,2,...Q$
 \end_inset
 
 
@@ -912,6 +944,42 @@ where we only need to consider Hilbert space spanned by
 
  (if we choose initial state as zero photon and up spin and lowest oscillator
  state)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:EOM_rho_matrix-1"
+
+\end_inset
+
+ together with the condition 
+\begin_inset Formula $\text{Tr}[\rho]=1$
+\end_inset
+
+ makes the steady state solution 
+\begin_inset Formula $\frac{d}{dt}\rho(t)$
+\end_inset
+
+ an over-determined problem.
+ What we do in the code is to put the first row of matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ satisfy the condition 
+\begin_inset Formula $\text{Tr}[\rho]=1$
+\end_inset
+
+
 \end_layout
 
 \end_body
