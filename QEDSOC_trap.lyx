@@ -691,7 +691,7 @@ reference "eq:rho_master"
  & + & \frac{1}{i}\left[-\left(q+\frac{1}{2}-\delta\right)\rho_{mn}^{p\sigma q\downarrow}-\frac{iq_{r}}{\sqrt{2}}\left(\sqrt{q}\rho_{mn}^{p\sigma(q-1)\downarrow}-\sqrt{q+1}\rho_{mn}^{p\sigma(q+1)\downarrow}\right)\right]\nonumber \\
  & + & \frac{\Omega}{2}\frac{1}{i}\left[\sqrt{m+1}\delta_{\sigma\uparrow}\rho_{(m+1)n}^{p\downarrow q\sigma'}+\sqrt{m}\delta_{\sigma\downarrow}\rho_{(m-1)n}^{p\uparrow q\sigma'}-\sqrt{n}\delta_{\sigma'\downarrow}\rho_{m(n-1)}^{p\sigma q\uparrow}-\sqrt{n+1}\delta_{\sigma'\uparrow}\rho_{m(n+1)}^{p\sigma q\downarrow}\right]\nonumber \\
  & + & \varepsilon_{p}\left(\sqrt{m}\rho_{(m-1)n}^{p\sigma q\sigma'}-\sqrt{m+1}\rho_{(m+1)n}^{p\sigma q\sigma'}-\sqrt{n+1}\rho_{m(n+1)}^{p\sigma q\sigma'}+\sqrt{n}\rho_{m(n-1)}^{p\sigma q\sigma'}\right)\nonumber \\
- & + & i\delta_{c}\left(m-n\right)\rho_{mn}^{p\sigma q\sigma'}+\kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{(m+1)(n+1)}^{p\sigma q\sigma'}-(m+n)\rho_{mn}^{p\sigma q\sigma'}\right)
+ & + & i\delta_{c}\left(m-n\right)\rho_{mn}^{p\sigma q\sigma'}+\kappa\left(2\sqrt{m+1}\sqrt{n+1}\rho_{(m+1)(n+1)}^{p\sigma q\sigma'}-(m+n)\rho_{mn}^{p\sigma q\sigma'}\right)\label{eq:rho_master_full}
 \end{eqnarray}
 
 \end_inset
@@ -704,9 +704,9 @@ Following the previous work, we define
 \begin_inset Formula 
 \begin{equation}
 [\rho_{mn}^{p\sigma q\sigma'}]_{(2N+2)(Q+1)\times(2N+2)(Q+1)}=\left(\begin{array}{cc}
-[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)} & [\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
-{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)} & [\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
-\end{array}\right)
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)} & [\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)} & [\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
+\end{array}\right)\label{eq:matrix_form_rho}
 \end{equation}
 
 \end_inset
@@ -735,14 +735,14 @@ th element is accessed as
 .
  We then further write EOM of density matrix as
 \begin_inset Formula 
-\[
+\begin{equation}
 [\rho]=\left(\begin{array}{c}
-[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
-{}[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
-{}[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\
-{}[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
-\end{array}\right)_{(2N+2)^{2}(Q+1)^{2}\times1}
-\]
+[\rho_{mn}^{p\uparrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\uparrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\downarrow q\uparrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}\\{}
+[\rho_{mn}^{p\downarrow q\downarrow}]_{(N+1)(Q+1)\times(N+1)(Q+1)}
+\end{array}\right)_{(2N+2)^{2}(Q+1)^{2}\times1}\label{eq:columnized_vector_rho}
+\end{equation}
 
 \end_inset
 
@@ -779,7 +779,9 @@ reference "eq:EOM_rho_matrix-1"
 \begin_inset Formula $i=(N+1)^{2}(Q+1)^{2}r+m(N+1)(Q+1)^{2}+n(Q+1)^{2}+p(Q+1)+q+1$
 \end_inset
 
- where 
+ (Note: MATLAB index starts from 1 and C++ code index starts from 0, so
+ attention should be paid here for the final value of 1.
+ No such value is needed in C++) where 
 \begin_inset Formula $r,c=0,1,2,3$
 \end_inset
 
@@ -962,16 +964,17 @@ reference "eq:EOM_rho_matrix-1"
 
 \end_inset
 
- together with the condition 
+ together with the normalization condition 
 \begin_inset Formula $\text{Tr}[\rho]=1$
 \end_inset
 
  makes the steady state solution 
-\begin_inset Formula $\frac{d}{dt}\rho(t)$
+\begin_inset Formula $\frac{d}{dt}\rho(t)=0$
 \end_inset
 
  an over-determined problem.
- What we do in the code is to put the first row of matrix 
+ What we do in the MATLAB and C++ code is to put the first row of matrix
+ 
 \begin_inset Formula $A$
 \end_inset
 
@@ -979,7 +982,503 @@ reference "eq:EOM_rho_matrix-1"
 \begin_inset Formula $\text{Tr}[\rho]=1$
 \end_inset
 
+, which is explicitly written as 
+\begin_inset Formula $\sum_{m=0}^{N}\sum_{p=0}^{Q}\sum_{\sigma=\pm}\rho_{mm}^{p\sigma p\sigma}=1$
+\end_inset
 
+.
+ What we have from Master Equation derivation in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_master_full"
+
+\end_inset
+
+ is to relate every index in matrix 
+\begin_inset Formula $\rho_{mn}^{p\sigma q\sigma'}$
+\end_inset
+
+ with their 
+\begin_inset Quotes eld
+\end_inset
+
+neighering part
+\begin_inset Quotes erd
+\end_inset
+
+, such as 
+\begin_inset Formula $\rho_{m(n+1)}^{p\sigma q\sigma'}$
+\end_inset
+
+ etc.
+ It is then natural to take advantage of the zeros in the matrix and their
+ location.
+ To exploit sparsity in solveing the general sparse linear system is to
+ be economical in terms of both storage and computational effort.
+ To visualize the sparse pattern of the matrix in Fig.
+ 1, we use spy() function in MATLAB to view a matrix with cutoff chosen
+ as 
+\begin_inset Formula $N=2$
+\end_inset
+
+ and 
+\begin_inset Formula $Q=2$
+\end_inset
+
+ before and after imposing the normalization condition.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename src_trap/sparse_view_1.eps
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename src_trap/sparse_view_2.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sparse view of the matrix pattern, before and after adding the normalization
+ condition.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given the relation written in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho_master_full"
+
+\end_inset
+
+, we need to convert the language into C++ array form, which turns out to
+ be a nontrivial task (total of two weeks coding/testing/debugging time).
+ In short, it is essential to decompose a given row index in columnized
+ vector Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:columnized_vector_rho"
+
+\end_inset
+
+ into correct corresponding 
+\begin_inset Formula $\{m,n,p,q,\sigma\}$
+\end_inset
+
+ values.
+ To achieve this goal, we use floor function (By definition, floor(x) Rounds
+ x downward, returning the largest integral value that is not greater than
+ x.
+ ) in both MATLAB and C++ in Algorithm 1.
+ It can be checked straightforwardly, that the first index is 0(1) for 
+\begin_inset Formula $m=n=p=q=0$
+\end_inset
+
+ in C++(MATLAB) code, and the last index is 
+\begin_inset Formula $N(N+1)(Q+1)^{2}+N(Q+1)^{2}+Q(Q+1)+Q=4(N+1)^{2}(Q+1)^{2}-1$
+\end_inset
+
+ for C++ code or 
+\begin_inset Formula $N(N+1)(Q+1)^{2}+N(Q+1)^{2}+Q(Q+1)+Q+1=4(N+1)^{2}(Q+1)^{2}$
+\end_inset
+
+ for MATLAB code, which 
+\begin_inset Quotes eld
+\end_inset
+
+fits right into the box
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mapping between global columnized vector and block and sub-block form of
+ density operator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Here, we show the correspondence used in C++ code.
+ Denote 
+\begin_inset Formula $\text{irow}=r(N+1)^{2}(Q+1)^{2}+k$
+\end_inset
+
+ and 
+\begin_inset Formula $k=m(N+1)(Q+1)^{2}+n(Q+1)^{2}+p(Q+1)+q$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $r$
+\end_inset
+
+ runs from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $3$
+\end_inset
+
+, corresponding to 
+\begin_inset Formula $\rho^{\uparrow\uparrow}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho^{\uparrow\downarrow}$
+\end_inset
+
+,
+\begin_inset Formula $\rho^{\downarrow\uparrow}$
+\end_inset
+
+,
+\begin_inset Formula $\rho^{\downarrow\downarrow}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $r=\text{floor}(\frac{\text{irow}}{(N+1)^{2}(Q+1)^{2}})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k=\text{irow}-r$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $m=\text{floor}(\frac{k}{(N+1)(Q+1)^{2}})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $n=\text{floor}(\frac{k-m(N+1)(Q+1)^{2})}{(Q+1)^{2}})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $p=\text{floor}(\frac{k-m(N+1)(Q+1)^{2}-n(Q+1)^{2}}{Q+1})$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $q=k-m(N+1)(Q+1)^{2}-n(Q+1)^{2}-p(Q+1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+The rule behind this mapping is, we 
+\end_layout
+
+\begin_layout Enumerate
+arrange density matrix written in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:matrix_form_rho"
+
+\end_inset
+
+ as block rectangular form of [
+\begin_inset Formula $\rho^{\uparrow\uparrow}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho^{\uparrow\downarrow}$
+\end_inset
+
+,
+\begin_inset Formula $\rho^{\downarrow\uparrow}$
+\end_inset
+
+,
+\begin_inset Formula $\rho^{\downarrow\downarrow}$
+\end_inset
+
+]
+\begin_inset Formula $^{T}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+loop over photon number index 
+\begin_inset Formula $m$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+from 0 to 
+\begin_inset Formula $N$
+\end_inset
+
+ as a row major priority;
+\end_layout
+
+\begin_layout Enumerate
+loop over orbital number index 
+\begin_inset Formula $p$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ from 0 to 
+\begin_inset Formula $Q$
+\end_inset
+
+ as a row major priority.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Note, for MATLAB code, row index starts from 1, so we need to add one to
+ the q value.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the parallized C++ code, we distribute the long columnized vector (size
+ of 
+\begin_inset Formula $4(N+1)^{2}(Q+1)^{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $1$
+\end_inset
+
+) of density operator into hundreds or even thousands cores of CPU, and
+ each CPU communicates with one another collectively via Message Passing
+ Interface (MPI) to handle the portable and scalable large-scale parallel
+ sparse linear algebra application.
+ Of course, the matrix construction and operations are interfaced with PETSc,
+ which is 
+\begin_inset Quotes eld
+\end_inset
+
+a suite of data structures and routines for the scalable (parallel) solution
+ of scientific applications modeled by partial differential equations
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We first developed MATLAB code with dense matrix construction, which is
+ inherited from previous published work [Atoms 2015, 3(2), 182-194, http://www.md
+pi.com/2218-2004/3/2/182], and benchmarked the physics in limiting cases
+ where we know it has to work based on Mean Field Theory (which is a lot
+ less computationally intensive).
+ Then we are motivated to develop high performance C++ code by the fact
+ that in the MATLAB prototype of code, it can only handle at most the cutoff
+ value of 
+\begin_inset Formula $N=5$
+\end_inset
+
+ and 
+\begin_inset Formula $Q=5$
+\end_inset
+
+ in our 12GB and 6-cores workstation.
+ Then we researched the open source market of available library solvers,
+ and found out PETSc stands out as one of the best platform to deliver high
+ performance solver and preconditioner algorithms.
+\end_layout
+
+\begin_layout Standard
+For matrix from small to intermediate size, the matrix can be decomposed
+ into lower and upper (LU) triangular decomposition, leading to direct-solver
+ techniques.
+ The advantage of the direct-solver approach is that once the decomposition
+ is performed, it is efficiently to solve for multiple parameters using
+ forward and backward substitutions, if the sparse pattern of the matrix
+ remains unchanged.
+ However, the time and memory complexities of LU factorization and its limited
+ scalability on large-scale distributed memory platforms prevent use of
+ the approach for large-scale problems.
+ 
+\end_layout
+
+\begin_layout Standard
+Among all of these possible approaches, the iterative-solver approach theoretica
+lly has the best time complexity (here, “complexity” denotes how the computation
+al cost of an algorithm grows with the size of the computational domain)
+ if the number of iterations is independent of the physical parameters.
+ For problems of substantial size, preallocation of matrix memory is crucial
+ for attaining good performance.
+ We form one vector from scratch, duplicate as needed and let PETSc decide
+ how many elements of the vector are stored on each processor, by identifying
+ the starting and ending mesh points on each processor for the interior
+ part of the mesh.
+ Scaling up, we need to deploy the sparse format of the matrix and thus,
+ a map that links back to dense matrix form for debugging purpose.
+ Following Compressed Row Storage (CRS) convention, we pass in 
+\begin_inset Quotes eld
+\end_inset
+
+local
+\begin_inset Quotes erd
+\end_inset
+
+ size of the created vector to access each row of the sparse matrix and
+ force the same parallel layout as the vector created above.
+ Using PETSc interface, the matrix format can be specified at runtime.
+ The linear system is distributed across the processors by chunks of contiguous
+ rows, which correspond to contiguous sections of the mesh on which the
+ problem is discretized.
+ For matrix assembly, each processor contributes entries for the part that
+ it owns locally.
+ In doing this, we loop over the global row index that is owned by the local
+ processor, and assign nonzero values at computed column indices according
+ to Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:EOM_rho_matrix-1"
+
+\end_inset
+
+ and Algorithm 1.
+ The matrix construction is essentially done in parallel and has been tested
+ to achieve good efficiency.
+ 
+\end_layout
+
+\begin_layout Standard
+After the code is finished with matrix construction, we deploy the object-orient
+ed strategy used in PETSc linear solver context and set various options
+ by default and/or at runtime.
+ Most of the existing practical iterative techniques for solving large linear
+ system of equations utilize a projection process in one way or another.
+ A projection process represents a canonical way of extracting an approximation
+ to the solution of a linear system from a subspace.
+ The matrix we concern about is non-hermitian, and thus has strongly indefinite
+ eigen-spectrum, which is known to be difficult to converge for Krylov iterative
+ solvers without appropriately choosing preconditioners.
+ It is possible to convert a non-hermitian matrix into a hermition one in
+ theory.
+ One such technique solves the equivalent linear system 
+\begin_inset Formula $A^{\dagger}Ax=A^{\dagger}b$
+\end_inset
+
+ which is called the normal equation, where 
+\begin_inset Formula $\dagger$
+\end_inset
+
+ denotes complex conjugate transposition.
+ The coefficient matrix 
+\begin_inset Formula $A^{\dagger}A$
+\end_inset
+
+ immediately becomes symmetric positive definite (SPD) and one can exploit
+ highly successful Conjugate Gradient or Lanczos solvers.
+ However, in practice, the coefficient matrix 
+\begin_inset Formula $A^{\dagger}A$
+\end_inset
+
+ becomes much denser and less well-conditioned than the original matrix
+ 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ The general consensus is that solving the normal equations can be an inefficien
+t approach in the case when 
+\begin_inset Formula $A$
+\end_inset
+
+ is poorly conditioned, but perhaps only in the extreme case when 
+\begin_inset Formula $A$
+\end_inset
+
+ is unitary, i.e.
+ 
+\begin_inset Formula $A^{\dagger}A=I$
+\end_inset
+
+ then the normal equation is clearly the best approach (the Conjugate Gradient
+ method will converge in zero step).
+\end_layout
+
+\begin_layout Standard
+We turn our major attention to the proper choice of combination in Krylov
+ subspace solvers and preconditioning matrix.
+ Preconditioning is a key ingredient for the success of Krylov subspace
+ methods in most cases, since the lack of robustness is a widely recognized
+ weakness of iterative solvers relative to direct solvers.
+ Indeed, finding a good preconditioner to solve a given sparse linear system
+ is often viewed as a combination of art and science.
+ 
 \end_layout
 
 \end_body

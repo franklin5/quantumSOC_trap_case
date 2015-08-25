@@ -4,8 +4,8 @@ clear
 clc
 global G
 npara = 1;
-N = 5;
-Q = 5;
+N = 2;
+Q = 2;
 % profile on
 omega = 0.5;
 qr = 0.22;
