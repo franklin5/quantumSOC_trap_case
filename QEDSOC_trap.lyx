@@ -1376,6 +1376,9 @@ al cost of an algorithm grows with the size of the computational domain)
  if the number of iterations is independent of the physical parameters.
  For problems of substantial size, preallocation of matrix memory is crucial
  for attaining good performance.
+ As user of PETSc, we do not need to preallocate exactly the correct amount
+ of space, as long as a sufficiently close estimate is given, the high efficienc
+y for matrix assembly will remain.
  We form one vector from scratch, duplicate as needed and let PETSc decide
  how many elements of the vector are stored on each processor, by identifying
  the starting and ending mesh points on each processor for the interior
@@ -1396,6 +1399,9 @@ local
  The linear system is distributed across the processors by chunks of contiguous
  rows, which correspond to contiguous sections of the mesh on which the
  problem is discretized.
+ In the PETSc partitioning scheme, all the matrix columns are local while
+ a number of global rows are distributed to different processors, which
+ can be decided by PETSc automatically.
  For matrix assembly, each processor contributes entries for the part that
  it owns locally.
  In doing this, we loop over the global row index that is owned by the local
