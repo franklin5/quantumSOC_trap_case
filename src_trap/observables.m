@@ -10,8 +10,9 @@ for m = 0:N
 end
 RHS=zeros(4*(N+1)^2*(Q+1)^2,1);
 RHS(1,1)=1; % property of the density operator, trace is one.
+% RHS = G*ones(4*(N+1)^2*(Q+1)^2,1);
 %% steady state solution, requiring time derivative is zero.
-rho=G\RHS;
+rho=G\RHS
 %rho = abs(rho);
 % figure(1)
 % hold on
@@ -43,6 +44,7 @@ for r=0:3
                         ir = 1; ic = 1;  
                     end
                     RMatrix_temp(ir*(N+1)*(Q+1)+m*(Q+1)+p+1,ic*(N+1)*(Q+1)+n*(Q+1)+q+1)=rho(k);
+                    PartialTransposeRho(ir*(N+1)*(Q+1)+n*(Q+1)+q+1,ic*(N+1)*(Q+1)+m*(Q+1)+p+1)=rho(k);
                 end
             end
         end
@@ -53,6 +55,7 @@ end
 %% observables
 %%%%%%%%%%%%%%%%%%%%%%%%
 photonNumberMatrix = zeros(2*(N+1)*(Q+1),2*(N+1)*(Q+1)); photonSquareMatrix = photonNumberMatrix;
+orbitalNumberMatrix = zeros(2*(N+1)*(Q+1),2*(N+1)*(Q+1)); orbitalSquareMatrix = orbitalNumberMatrix;
 nonzeros = 1;
 for m = 0:N
     for p = 0:Q
@@ -61,6 +64,10 @@ for m = 0:N
         photonNumberMatrix(k+(N+1)*(Q+1),k+(N+1)*(Q+1)) = m;
         photonSquareMatrix(k,k) = m^2;
         photonSquareMatrix(k+(N+1)*(Q+1),k+(N+1)*(Q+1)) = m^2;
+        orbitalNumberMatrix(k,k) = p;
+        orbitalNumberMatrix(k+(N+1)*(Q+1),k+(N+1)*(Q+1)) = p;
+        orbitalSquareMatrix(k,k) = p^2;
+        orbitalSquareMatrix(k+(N+1)*(Q+1),k+(N+1)*(Q+1)) = p^2;
         if (m~=0) 
             diagrhotmp(nonzeros,1)=RMatrix_temp(k,k);
             nonzeros = nonzeros+1;
@@ -73,8 +80,11 @@ end
 steadystateN(npara)=real(trace(RMatrix_temp*photonNumberMatrix));
 steadystateFluct(npara)=real(trace(RMatrix_temp*photonSquareMatrix))-steadystateN(npara)^2;
 steadystateFluct(npara)=steadystateFluct(npara)/steadystateN(npara);% check Poissonian distribution
-PartialTransposeRho(:,:)=[reshape(rho(1:(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1)),reshape(rho(1+(N+1)^2*(Q+1)^2:2*(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1));...
-    reshape(rho(1+2*(N+1)^2*(Q+1)^2:3*(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1)),reshape(rho(1+3*(N+1)^2*(Q+1)^2:4*(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1))];
+steadystateOrbit(npara)=real(trace(RMatrix_temp*orbitalNumberMatrix));
+steadystateOrbitFluc(npara)=real(trace(RMatrix_temp*orbitalSquareMatrix))-steadystateOrbit(npara)^2;
+steadystateOrbitFluc(npara)=steadystateOrbitFluc(npara)/steadystateOrbit(npara);% check Poissonian distribution
+% PartialTransposeRho(:,:)=[reshape(rho(1:(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1)),reshape(rho(1+(N+1)^2*(Q+1)^2:2*(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1));...
+%     reshape(rho(1+2*(N+1)^2*(Q+1)^2:3*(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1)),reshape(rho(1+3*(N+1)^2*(Q+1)^2:4*(N+1)^2*(Q+1)^2),(N+1)*(Q+1),(N+1)*(Q+1))];
 PTRhoEig=real(eig(PartialTransposeRho));
 negativity(npara)=sum(abs(PTRhoEig)-PTRhoEig)/2;
 %end
@@ -85,4 +95,7 @@ negativity(npara)=sum(abs(PTRhoEig)-PTRhoEig)/2;
 % set(gca,'fontsize',16)
 steadystateN
 steadystateFluct
-diag(RMatrix_temp)
+%diag(RMatrix_temp)
+steadystateOrbit
+steadystateOrbitFluc
+negativity

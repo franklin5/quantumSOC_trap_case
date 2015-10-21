@@ -4,17 +4,17 @@ clear
 clc
 global G
 npara = 1;
-N = 2;
-Q = 2;
+N = 3;
+Q = 14;
 % profile on
-omega = 0.5;
-qr = 0.22;
+omega = 1;
+qr = 3.162277660168380;
 qr = qr*sqrt(omega);
-Omega = 5;   
-delta = 0.5;
-varepsilon = 1;
+Omega = 180;   
+delta = 0.05;
+varepsilon = 100;
 delta_c = 1;
-kappa = 1;
+kappa = 100;
 G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon, omega);
 
 %% We test that the steady state evolution indeed matches the time
@@ -23,7 +23,7 @@ G = generateG(N, Q, delta, delta_c, kappa, Omega, qr, varepsilon, omega);
 % rho0(1,1)=1; % initial condition of the state
 % maxT = 5;
 % [TimeRho, RhoT] = ode45(@timeEvoRHO, [0 maxT], rho0);
-%figure(Q)
+% figure(Q)
 % for i = 1:length(RhoT(1,:))
 %     plot(TimeRho,abs(RhoT(:,i)))
 %     hold on
